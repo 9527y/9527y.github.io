@@ -1,0 +1,85 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>格式化并挂载数据盘 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="注意：
+格式化后，数据盘中的数据将被全部清空。请在格式化之前，确保数据盘中没有数据或已对重要数据进行备份。为避免服务发生异常，格式化前请确保云服务器已停止对外服务。 手动格式化并挂载数据盘
+请根据以下步骤格式化并挂载数据盘。
+注意：
+执行下述命令时，请注意修改数据盘盘符，本示例假设数据盘盘符为vdb。
+步骤一：格式化数据盘 注意： 在进行分区格式化时，开发者可以自行决定文件系统的格式，如ext3、ext4等。示例采用ext4格式。
+执行 mkfs 命令对数据盘进行格式化：
+mkfs.ext4 /dev/vdb 步骤二：挂载数据盘 创建挂载点 data 目录：
+mkdir /data 挂载新分区：
+mount /dev/vdb /data 验证数据盘是否挂载成功：
+df -h 出现如下信息则说明挂载成功，即 Linux 服务器已经挂载数据盘：
+Filesystem	Size Used Avail Use% Mounted on /dev/vdb	50G 53M 47G 1%	/data 步骤三：实现开机自动挂载 添加数据盘挂载信息至/etc/fstab，实现开机自动挂载。
+当您希望云服务器在重启或开机时能自动挂载数据盘，必须将数据盘挂载信息添加到/etc/fstab中。否则云服务器重启或开机后，不会自动挂载数据盘。
+使用以下命令添加分区信息：
+echo '/dev/vdb /data ext4 defaults 0 0' >> /etc/fstab 使用以下命令查看分区信息：
+cat /etc/fstab 出现如下信息则说明添加数据盘挂载信息成功：
+/dev/vdb /data ext4 defaults 0 0 自动格式化并挂载数据盘 在腾讯云的 Linux 服务器上，您可以通过运行以下 Shell 脚本来实现自动格式化和挂载数据盘："><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/format-disk-mount-disk/><meta property="og:title" content="格式化并挂载数据盘"><meta property="og:description" content="注意：
+格式化后，数据盘中的数据将被全部清空。请在格式化之前，确保数据盘中没有数据或已对重要数据进行备份。为避免服务发生异常，格式化前请确保云服务器已停止对外服务。 手动格式化并挂载数据盘
+请根据以下步骤格式化并挂载数据盘。
+注意：
+执行下述命令时，请注意修改数据盘盘符，本示例假设数据盘盘符为vdb。
+步骤一：格式化数据盘 注意： 在进行分区格式化时，开发者可以自行决定文件系统的格式，如ext3、ext4等。示例采用ext4格式。
+执行 mkfs 命令对数据盘进行格式化：
+mkfs.ext4 /dev/vdb 步骤二：挂载数据盘 创建挂载点 data 目录：
+mkdir /data 挂载新分区：
+mount /dev/vdb /data 验证数据盘是否挂载成功：
+df -h 出现如下信息则说明挂载成功，即 Linux 服务器已经挂载数据盘：
+Filesystem	Size Used Avail Use% Mounted on /dev/vdb	50G 53M 47G 1%	/data 步骤三：实现开机自动挂载 添加数据盘挂载信息至/etc/fstab，实现开机自动挂载。
+当您希望云服务器在重启或开机时能自动挂载数据盘，必须将数据盘挂载信息添加到/etc/fstab中。否则云服务器重启或开机后，不会自动挂载数据盘。
+使用以下命令添加分区信息：
+echo '/dev/vdb /data ext4 defaults 0 0' >> /etc/fstab 使用以下命令查看分区信息：
+cat /etc/fstab 出现如下信息则说明添加数据盘挂载信息成功：
+/dev/vdb /data ext4 defaults 0 0 自动格式化并挂载数据盘 在腾讯云的 Linux 服务器上，您可以通过运行以下 Shell 脚本来实现自动格式化和挂载数据盘："><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/format-disk-mount-disk/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2020-06-02T17:57:34+00:00"><meta property="article:modified_time" content="2020-06-02T17:57:34+00:00"><meta itemprop=name content="格式化并挂载数据盘"><meta itemprop=description content="注意：
+格式化后，数据盘中的数据将被全部清空。请在格式化之前，确保数据盘中没有数据或已对重要数据进行备份。为避免服务发生异常，格式化前请确保云服务器已停止对外服务。 手动格式化并挂载数据盘
+请根据以下步骤格式化并挂载数据盘。
+注意：
+执行下述命令时，请注意修改数据盘盘符，本示例假设数据盘盘符为vdb。
+步骤一：格式化数据盘 注意： 在进行分区格式化时，开发者可以自行决定文件系统的格式，如ext3、ext4等。示例采用ext4格式。
+执行 mkfs 命令对数据盘进行格式化：
+mkfs.ext4 /dev/vdb 步骤二：挂载数据盘 创建挂载点 data 目录：
+mkdir /data 挂载新分区：
+mount /dev/vdb /data 验证数据盘是否挂载成功：
+df -h 出现如下信息则说明挂载成功，即 Linux 服务器已经挂载数据盘：
+Filesystem	Size Used Avail Use% Mounted on /dev/vdb	50G 53M 47G 1%	/data 步骤三：实现开机自动挂载 添加数据盘挂载信息至/etc/fstab，实现开机自动挂载。
+当您希望云服务器在重启或开机时能自动挂载数据盘，必须将数据盘挂载信息添加到/etc/fstab中。否则云服务器重启或开机后，不会自动挂载数据盘。
+使用以下命令添加分区信息：
+echo '/dev/vdb /data ext4 defaults 0 0' >> /etc/fstab 使用以下命令查看分区信息：
+cat /etc/fstab 出现如下信息则说明添加数据盘挂载信息成功：
+/dev/vdb /data ext4 defaults 0 0 自动格式化并挂载数据盘 在腾讯云的 Linux 服务器上，您可以通过运行以下 Shell 脚本来实现自动格式化和挂载数据盘："><meta itemprop=datePublished content="2020-06-02T17:57:34+00:00"><meta itemprop=dateModified content="2020-06-02T17:57:34+00:00"><meta itemprop=wordCount content="92"><meta itemprop=keywords content="centos7,"><meta name=twitter:card content="summary"><meta name=twitter:title content="格式化并挂载数据盘"><meta name=twitter:description content="注意：
+格式化后，数据盘中的数据将被全部清空。请在格式化之前，确保数据盘中没有数据或已对重要数据进行备份。为避免服务发生异常，格式化前请确保云服务器已停止对外服务。 手动格式化并挂载数据盘
+请根据以下步骤格式化并挂载数据盘。
+注意：
+执行下述命令时，请注意修改数据盘盘符，本示例假设数据盘盘符为vdb。
+步骤一：格式化数据盘 注意： 在进行分区格式化时，开发者可以自行决定文件系统的格式，如ext3、ext4等。示例采用ext4格式。
+执行 mkfs 命令对数据盘进行格式化：
+mkfs.ext4 /dev/vdb 步骤二：挂载数据盘 创建挂载点 data 目录：
+mkdir /data 挂载新分区：
+mount /dev/vdb /data 验证数据盘是否挂载成功：
+df -h 出现如下信息则说明挂载成功，即 Linux 服务器已经挂载数据盘：
+Filesystem	Size Used Avail Use% Mounted on /dev/vdb	50G 53M 47G 1%	/data 步骤三：实现开机自动挂载 添加数据盘挂载信息至/etc/fstab，实现开机自动挂载。
+当您希望云服务器在重启或开机时能自动挂载数据盘，必须将数据盘挂载信息添加到/etc/fstab中。否则云服务器重启或开机后，不会自动挂载数据盘。
+使用以下命令添加分区信息：
+echo '/dev/vdb /data ext4 defaults 0 0' >> /etc/fstab 使用以下命令查看分区信息：
+cat /etc/fstab 出现如下信息则说明添加数据盘挂载信息成功：
+/dev/vdb /data ext4 defaults 0 0 自动格式化并挂载数据盘 在腾讯云的 Linux 服务器上，您可以通过运行以下 Shell 脚本来实现自动格式化和挂载数据盘："></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">格式化并挂载数据盘</h1><time class="f6 mv4 dib tracked" datetime=2020-06-02T17:57:34Z>June 2, 2020</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><blockquote><p>注意：</p><p>格式化后，数据盘中的数据将被全部清空。请在格式化之前，确保数据盘中没有数据或已对重要数据进行备份。为避免服务发生异常，格式化前请确保云服务器已停止对外服务。
+手动格式化并挂载数据盘</p></blockquote><p>请根据以下步骤格式化并挂载数据盘。</p><blockquote><p>注意：</p><p>执行下述命令时，请注意修改数据盘盘符，本示例假设数据盘盘符为vdb。</p></blockquote><h2 id=步骤一格式化数据盘>步骤一：格式化数据盘</h2><blockquote><p>注意： 在进行分区格式化时，开发者可以自行决定文件系统的格式，如ext3、ext4等。示例采用ext4格式。</p></blockquote><p>执行 mkfs 命令对数据盘进行格式化：</p><pre><code> mkfs.ext4 /dev/vdb
+</code></pre><h2 id=步骤二挂载数据盘>步骤二：挂载数据盘</h2><p>创建挂载点 data 目录：</p><pre><code> mkdir /data
+</code></pre><p>挂载新分区：</p><pre><code> mount /dev/vdb /data
+</code></pre><p>验证数据盘是否挂载成功：</p><pre><code> df -h
+</code></pre><p>出现如下信息则说明挂载成功，即 Linux 服务器已经挂载数据盘：</p><pre><code> Filesystem	Size  Used Avail Use% Mounted on
+/dev/vdb	50G  53M   47G   1%		/data
+</code></pre><h2 id=步骤三实现开机自动挂载>步骤三：实现开机自动挂载</h2><p>添加数据盘挂载信息至/etc/fstab，实现开机自动挂载。</p><p>当您希望云服务器在重启或开机时能自动挂载数据盘，必须将数据盘挂载信息添加到/etc/fstab中。否则云服务器重启或开机后，不会自动挂载数据盘。</p><p>使用以下命令添加分区信息：</p><pre><code> echo '/dev/vdb /data ext4 defaults 0 0' &gt;&gt; /etc/fstab
+</code></pre><p>使用以下命令查看分区信息：</p><pre><code> cat /etc/fstab
+</code></pre><p>出现如下信息则说明添加数据盘挂载信息成功：</p><pre><code> /dev/vdb /data ext4 defaults 0 0
+</code></pre><p>自动格式化并挂载数据盘
+在腾讯云的 Linux 服务器上，您可以通过运行以下 Shell 脚本来实现自动格式化和挂载数据盘：</p><pre><code>#!/bin/bash
+type=ext4
+mount_dir=/data
+mkfs.$type /dev/vdb 
+mkdir -p $mount_dir
+echo &quot;/dev/vdb $mount_dir $type defaults 0 0&quot; &gt;&gt; /etc/fstab
+mount -a
+</code></pre><p>copy自：https://cloud.tencent.com/document/product/213/17487</p><ul class=pa0><li class="list di"><a href=/tags/centos7/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">centos7</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/centos7-install-mysql/>一步一步CentOS7 安装 MySQL5.7</a></li><li class=mb2><a href=/blog/centos7-sshd-port/>CentOS7修改服务器ssh端口号</a></li><li class=mb2><a href=/blog/centos7-firewalld/>CentOS7 firewall 开放端口和关闭防火墙</a></li><li class=mb2><a href=/blog/centos7-reset-root-password/>CentOS7 重置root密码</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

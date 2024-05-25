@@ -1,0 +1,41 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Nginx转发websocket协议 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="Nginx转发 Nginx添加WebSocket的转发配置。
+location /websocket/ { proxy_pass http://myserver; proxy_http_version 1.1; proxy_read_timeout 360s; proxy_redirect off; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &#34;upgrade&#34;; #配置连接为升级连接 proxy_set_header Host $host:$server_port; proxy_set_header X-Real-IP $remote_addr; proxy_set_header REMOTE-HOST $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } 使用如上连接，如果所有的连接仅仅为 &ldquo;ws&rdquo; 协议的请求是没有问题的，但是如果要及支持 http 请求又支持 ws 请求上述配置就不起作用了。
+既支持http又支持 ws 的配置。 http { #自定义变量 $connection_upgrade map $http_upgrade $connection_upgrade { default keep-alive; #默认为keep-alive 可以支持 一般http请求 'websocket' upgrade; #如果为websocket 则为 upgrade 可升级的。 } server { ... location /chat/ { proxy_pass http://backend; proxy_http_version 1."><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/nginx-sw-forward/><meta property="og:title" content="Nginx转发websocket协议"><meta property="og:description" content="Nginx转发 Nginx添加WebSocket的转发配置。
+location /websocket/ { proxy_pass http://myserver; proxy_http_version 1.1; proxy_read_timeout 360s; proxy_redirect off; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &#34;upgrade&#34;; #配置连接为升级连接 proxy_set_header Host $host:$server_port; proxy_set_header X-Real-IP $remote_addr; proxy_set_header REMOTE-HOST $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } 使用如上连接，如果所有的连接仅仅为 &ldquo;ws&rdquo; 协议的请求是没有问题的，但是如果要及支持 http 请求又支持 ws 请求上述配置就不起作用了。
+既支持http又支持 ws 的配置。 http { #自定义变量 $connection_upgrade map $http_upgrade $connection_upgrade { default keep-alive; #默认为keep-alive 可以支持 一般http请求 'websocket' upgrade; #如果为websocket 则为 upgrade 可升级的。 } server { ... location /chat/ { proxy_pass http://backend; proxy_http_version 1."><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/nginx-sw-forward/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2022-01-07T17:03:17+00:00"><meta property="article:modified_time" content="2022-01-07T17:03:17+00:00"><meta itemprop=name content="Nginx转发websocket协议"><meta itemprop=description content="Nginx转发 Nginx添加WebSocket的转发配置。
+location /websocket/ { proxy_pass http://myserver; proxy_http_version 1.1; proxy_read_timeout 360s; proxy_redirect off; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &#34;upgrade&#34;; #配置连接为升级连接 proxy_set_header Host $host:$server_port; proxy_set_header X-Real-IP $remote_addr; proxy_set_header REMOTE-HOST $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } 使用如上连接，如果所有的连接仅仅为 &ldquo;ws&rdquo; 协议的请求是没有问题的，但是如果要及支持 http 请求又支持 ws 请求上述配置就不起作用了。
+既支持http又支持 ws 的配置。 http { #自定义变量 $connection_upgrade map $http_upgrade $connection_upgrade { default keep-alive; #默认为keep-alive 可以支持 一般http请求 'websocket' upgrade; #如果为websocket 则为 upgrade 可升级的。 } server { ... location /chat/ { proxy_pass http://backend; proxy_http_version 1."><meta itemprop=datePublished content="2022-01-07T17:03:17+00:00"><meta itemprop=dateModified content="2022-01-07T17:03:17+00:00"><meta itemprop=wordCount content="82"><meta itemprop=keywords content="nginx,websocket,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Nginx转发websocket协议"><meta name=twitter:description content="Nginx转发 Nginx添加WebSocket的转发配置。
+location /websocket/ { proxy_pass http://myserver; proxy_http_version 1.1; proxy_read_timeout 360s; proxy_redirect off; proxy_set_header Upgrade $http_upgrade; proxy_set_header Connection &#34;upgrade&#34;; #配置连接为升级连接 proxy_set_header Host $host:$server_port; proxy_set_header X-Real-IP $remote_addr; proxy_set_header REMOTE-HOST $remote_addr; proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; } 使用如上连接，如果所有的连接仅仅为 &ldquo;ws&rdquo; 协议的请求是没有问题的，但是如果要及支持 http 请求又支持 ws 请求上述配置就不起作用了。
+既支持http又支持 ws 的配置。 http { #自定义变量 $connection_upgrade map $http_upgrade $connection_upgrade { default keep-alive; #默认为keep-alive 可以支持 一般http请求 'websocket' upgrade; #如果为websocket 则为 upgrade 可升级的。 } server { ... location /chat/ { proxy_pass http://backend; proxy_http_version 1."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">Nginx转发websocket协议</h1><time class="f6 mv4 dib tracked" datetime=2022-01-07T17:03:17Z>January 7, 2022</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id=nginx转发>Nginx转发</h2><p>Nginx添加WebSocket的转发配置。</p><pre tabindex=0><code>location /websocket/ {
+        proxy_pass http://myserver;
+ 
+        proxy_http_version 1.1;
+        proxy_read_timeout 360s;   
+        proxy_redirect off;   
+        proxy_set_header Upgrade $http_upgrade; 
+        proxy_set_header Connection &#34;upgrade&#34;;    #配置连接为升级连接
+        proxy_set_header Host $host:$server_port;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header REMOTE-HOST $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+</code></pre><p>使用如上连接，如果所有的连接仅仅为 &ldquo;ws&rdquo; 协议的请求是没有问题的，但是如果要及支持 http 请求又支持 ws 请求上述配置就不起作用了。</p><h2 id=既支持http又支持-ws-的配置>既支持http又支持 ws 的配置。</h2><pre tabindex=0><code>http {
+ 
+   #自定义变量 $connection_upgrade
+    map $http_upgrade $connection_upgrade { 
+        default          keep-alive;  #默认为keep-alive 可以支持 一般http请求
+        &#39;websocket&#39;      upgrade;     #如果为websocket 则为 upgrade 可升级的。
+    }
+ 
+    server {
+        ...
+ 
+        location /chat/ {
+            proxy_pass http://backend;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade; #此处配置 上面定义的变量
+            proxy_set_header Connection $connection_upgrade;
+        }
+</code></pre><ul class=pa0><li class="list di"><a href=/tags/nginx/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">nginx</a></li><li class="list di"><a href=/tags/websocket/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">websocket</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/nginx-ssl/>nginx 80端口重定向到443端口</a></li><li class=mb2><a href=/blog/vue-router-history-nginx-config/>vue-router的history模式nginx配置</a></li><li class=mb2><a href=/blog/nginx-static-config/>Nginx 静态文件服务配置及优化</a></li><li class=mb2><a href=/blog/nginx-redirect-80-to-443/>nginx 80端口重定向到443端口</a></li><li class=mb2><a href=/blog/nginx-413-configuration/>nginx上传文件413错误</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

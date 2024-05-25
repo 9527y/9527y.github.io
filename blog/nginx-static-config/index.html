@@ -1,0 +1,97 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Nginx 静态文件服务配置及优化 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="[TOC]
+根目录和索引文件 root 指令指定将用于搜索文件的根目录。 为了获取所请求文件的路径，NGINX 将请求 URI 附加到 root 指令指定的路径。该指令可以放在 http {}，server {} 或 location {} 上下文中的任何级别。在下面的示例中，为虚拟服务器定义了 root 指令。 它适用于未包含根指令的所有location {} 块，以显式重新定义根：
+server { root /www/data; location / { } location /images/ { } location ~ \.(mp3|mp4) { root /www/media; } } 在这里，NGINX 针对 /images/ 开头的 URI 将在文件系统的 /www/ data/images/ 目录中搜索相应文件。 如果 URI 以 .mp3 或 .mp4 扩展名结尾，则 NGINX 会在 /www/media/ 目录中搜索该文件，因为它是在匹配的位置块中定义的。
+如果请求以 / 结尾，则 NGINX 将其视为对目录的请求，并尝试在目录中查找索引文件。index 指令定义索引文件的名称（默认值为 index.html）。要继续该示例，如果请求 URI 是 /images/some/path/，则 NGINX 会返回文件 /www/data/images/some/path/index."><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/nginx-static-config/><meta property="og:title" content="Nginx 静态文件服务配置及优化"><meta property="og:description" content="[TOC]
+根目录和索引文件 root 指令指定将用于搜索文件的根目录。 为了获取所请求文件的路径，NGINX 将请求 URI 附加到 root 指令指定的路径。该指令可以放在 http {}，server {} 或 location {} 上下文中的任何级别。在下面的示例中，为虚拟服务器定义了 root 指令。 它适用于未包含根指令的所有location {} 块，以显式重新定义根：
+server { root /www/data; location / { } location /images/ { } location ~ \.(mp3|mp4) { root /www/media; } } 在这里，NGINX 针对 /images/ 开头的 URI 将在文件系统的 /www/ data/images/ 目录中搜索相应文件。 如果 URI 以 .mp3 或 .mp4 扩展名结尾，则 NGINX 会在 /www/media/ 目录中搜索该文件，因为它是在匹配的位置块中定义的。
+如果请求以 / 结尾，则 NGINX 将其视为对目录的请求，并尝试在目录中查找索引文件。index 指令定义索引文件的名称（默认值为 index.html）。要继续该示例，如果请求 URI 是 /images/some/path/，则 NGINX 会返回文件 /www/data/images/some/path/index."><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/nginx-static-config/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2020-06-11T10:22:54+00:00"><meta property="article:modified_time" content="2020-06-11T10:22:54+00:00"><meta itemprop=name content="Nginx 静态文件服务配置及优化"><meta itemprop=description content="[TOC]
+根目录和索引文件 root 指令指定将用于搜索文件的根目录。 为了获取所请求文件的路径，NGINX 将请求 URI 附加到 root 指令指定的路径。该指令可以放在 http {}，server {} 或 location {} 上下文中的任何级别。在下面的示例中，为虚拟服务器定义了 root 指令。 它适用于未包含根指令的所有location {} 块，以显式重新定义根：
+server { root /www/data; location / { } location /images/ { } location ~ \.(mp3|mp4) { root /www/media; } } 在这里，NGINX 针对 /images/ 开头的 URI 将在文件系统的 /www/ data/images/ 目录中搜索相应文件。 如果 URI 以 .mp3 或 .mp4 扩展名结尾，则 NGINX 会在 /www/media/ 目录中搜索该文件，因为它是在匹配的位置块中定义的。
+如果请求以 / 结尾，则 NGINX 将其视为对目录的请求，并尝试在目录中查找索引文件。index 指令定义索引文件的名称（默认值为 index.html）。要继续该示例，如果请求 URI 是 /images/some/path/，则 NGINX 会返回文件 /www/data/images/some/path/index."><meta itemprop=datePublished content="2020-06-11T10:22:54+00:00"><meta itemprop=dateModified content="2020-06-11T10:22:54+00:00"><meta itemprop=wordCount content="377"><meta itemprop=keywords content="nginx,centos7,"><meta name=twitter:card content="summary"><meta name=twitter:title content="Nginx 静态文件服务配置及优化"><meta name=twitter:description content="[TOC]
+根目录和索引文件 root 指令指定将用于搜索文件的根目录。 为了获取所请求文件的路径，NGINX 将请求 URI 附加到 root 指令指定的路径。该指令可以放在 http {}，server {} 或 location {} 上下文中的任何级别。在下面的示例中，为虚拟服务器定义了 root 指令。 它适用于未包含根指令的所有location {} 块，以显式重新定义根：
+server { root /www/data; location / { } location /images/ { } location ~ \.(mp3|mp4) { root /www/media; } } 在这里，NGINX 针对 /images/ 开头的 URI 将在文件系统的 /www/ data/images/ 目录中搜索相应文件。 如果 URI 以 .mp3 或 .mp4 扩展名结尾，则 NGINX 会在 /www/media/ 目录中搜索该文件，因为它是在匹配的位置块中定义的。
+如果请求以 / 结尾，则 NGINX 将其视为对目录的请求，并尝试在目录中查找索引文件。index 指令定义索引文件的名称（默认值为 index.html）。要继续该示例，如果请求 URI 是 /images/some/path/，则 NGINX 会返回文件 /www/data/images/some/path/index."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">Nginx 静态文件服务配置及优化</h1><time class="f6 mv4 dib tracked" datetime=2020-06-11T10:22:54Z>June 11, 2020</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>[TOC]</p><h2 id=根目录和索引文件>根目录和索引文件</h2><p>root 指令指定将用于搜索文件的根目录。 为了获取所请求文件的路径，NGINX 将请求 URI 附加到 root 指令指定的路径。该指令可以放在 http {}，server {} 或 location {} 上下文中的任何级别。在下面的示例中，为虚拟服务器定义了 root 指令。 它适用于未包含根指令的所有location {} 块，以显式重新定义根：</p><pre tabindex=0><code>server {
+    root /www/data;
+
+    location / {
+    }
+
+    location /images/ {
+    }
+
+    location ~ \.(mp3|mp4) {
+        root /www/media;
+    }
+}
+</code></pre><p>在这里，NGINX 针对 /images/ 开头的 URI 将在文件系统的 /www/ data/images/ 目录中搜索相应文件。 如果 URI 以 .mp3 或 .mp4 扩展名结尾，则 NGINX 会在 /www/media/ 目录中搜索该文件，因为它是在匹配的位置块中定义的。</p><p>如果请求以 / 结尾，则 NGINX 将其视为对目录的请求，并尝试在目录中查找索引文件。index 指令定义索引文件的名称（默认值为 index.html）。要继续该示例，如果请求 URI 是 /images/some/path/，则 NGINX 会返回文件 /www/data/images/some/path/index.html（如果存在）。如果没有，NGINX 默认返回 HTTP 404 错误（未找到）。要配置 NGINX 以返回自动生成的目录列表，请在 autoindex 指令中包含 on 参数：</p><pre tabindex=0><code>location /images/ {
+    autoindex on;
+}
+</code></pre><p>你可以在 index 指令中列出多个文件名。 NGINX按指定的顺序搜索文件并返回它找到的第一个文件。</p><pre tabindex=0><code>location / {
+    index index.$geo.html index.htm index.html;
+}
+</code></pre><p>这里使用的 $geo 变量是通过 geo 指令设置的自定义变量。变量的值取决于客户端的 IP 地址。</p><p>要返回索引文件，NGINX 会检查它是否存在，然后对通过将索引文件的名称附加到基础 URI 上获得的新 URI 进行内部重定向。内部重定向导致对位置的新搜索，并且可能最终位于另一个位置，如以下示例所示：</p><pre tabindex=0><code>location / {
+    root /data;
+    index index.html index.php;
+}
+
+location ~ \.php {
+    fastcgi_pass localhost:8000;
+    #...
+
+}
+</code></pre><p>这里，如果请求中的 URI 是 /path/，并且 /data/path/index.html 不存在但 /data/path/index.php 存在，则内部重定向到 /path/index.php 将映射到第二个位置。结果，请求被代理。</p><h2 id=尝试几种选择>尝试几种选择</h2><p>try_files 指令可用于检查指定的文件或目录是否存在; NGINX 会进行内部重定向，如果没有，则返回指定的状态代码。例如，要检查对应于请求 URI 的文件是否存在，请使用 try_files指令和 $uri 变量，如下所示：</p><pre tabindex=0><code>server {
+    root /www/data;
+
+    location /images/ {
+        try_files $uri /images/default.gif;
+    }
+}
+</code></pre><p>该文件以 URI 的形式指定，使用在当前位置或虚拟服务器的上下文中设置的根或别名指令进行处理。在这种情况下，如果对应于原始 URI 的文件不存在，NGINX 会将内部重定向到最后一个参数指定的 URI，并返回 <code>/www/data/images/default.gif</code>。</p><p>最后一个参数也可以是状态代码（直接以等号开头）或位置名称。 在以下示例中，如果 try_files 指令的所有参数都不会解析为现有文件或目录，则会返回 404 错误。</p><pre tabindex=0><code>location / {
+    try_files $uri $uri/ $uri.html =404;
+}
+</code></pre><p>在下一个示例中，如果原始 URI 和带有附加尾部斜杠的 URI 都不会解析为现有文件或目录，则会将请求重定向到指定位置，并将其传递给代理服务器。</p><pre tabindex=0><code>location / {
+    try_files $uri $uri/ @backend;
+}
+
+location @backend {
+    proxy_pass http://backend.example.com;
+}
+</code></pre><p>有关更多信息，请观看内容缓存网络研讨会，了解如何显着提高网站性能，并深入了解 NGINX 的缓存功能。</p><p>优化服务内容的性能
+加载速度是提供任何内容的关键因素。 对 NGINX 配置进行微小优化可以提高生产力并帮助实现最佳性能。</p><p>启用 sendfile
+默认情况下，NGINX 会自行处理文件传输，并在发送之前将文件复制到缓冲区中。 启用 sendfile 指令消除了将数据复制到缓冲区的步骤，并允许将数据从一个文件描述符直接复制到另一个文件描述符。或者，为了防止一个快速连接完全占用工作进程，可以使用 sendfile_max_chunk 指令限制单个sendfile() 调用中传输的数据量（在本例中为1 MB）：</p><pre tabindex=0><code>location /mp3 {
+    sendfile           on;
+    sendfile_max_chunk 1m;
+    #...
+
+}
+</code></pre><h2 id=启用-tcp_nopush>启用 tcp_nopush</h2><p>将 tcp_nopush 指令与 sendfile on; 指令一起使用。这使得 NGINX 可以在 sendfile() 获取数据块之后立即在一个数据包中发送 HTTP 响应头。</p><pre tabindex=0><code>location /mp3 {
+    sendfile   on;
+    tcp_nopush on;
+    #...
+
+}
+</code></pre><h2 id=启用-tcp_nodelay>启用 tcp_nodelay</h2><p>tcp_nodelay 指令允许覆盖 Nagle 的算法，该算法最初设计用于解决慢速网络中小数据包的问题。该算法将许多小数据包合并为一个较大的数据包，并以 200 毫秒的延迟发送数据包。如今，在提供大型静态文件时，无论数据包大小如何，都可以立即发送数据。延迟也会影响在线应用程序（ssh，在线游戏，在线交易等）。默认情况下，tcp_nodelay 指令设置为 on，这意味着禁用了 Nagle的算法。此指令仅用于 keepalive 连接：</p><pre tabindex=0><code>location /mp3  {
+    tcp_nodelay       on;
+    keepalive_timeout 65;
+    #...
+    
+}
+</code></pre><h2 id=优化积压队列>优化积压队列</h2><p>其中一个重要因素是 NGINX 可以多快地处理传入连接。一般规则是在建立连接时，将其放入侦听套接字的 “listen” (监听)队列中。在正常负载下，队列很小或根本没有队列。但是在高负载下，队列会急剧增长，导致性能不均匀，连接中断，延迟增加。</p><h2 id=显示积压队列>显示积压队列</h2><p>使用命令 netstat -Lan 来显示当前监听队列。输出可能如下所示，它显示在端口 80上的监听队列中，有 10 个未接受的连接，这些连接针对配置的最多 128 个排队连接。这种情况很正常。</p><pre tabindex=0><code>Current listen queue sizes (qlen/incqlen/maxqlen)
+Listen         Local Address         
+0/0/128        *.12345            
+10/0/128        *.80       
+0/0/128        *.8080
+</code></pre><p>相反，在以下命令中，未接受的连接数（192）超过了 128 的限制。当网站流量很大时，这种情况很常见。要获得最佳性能，需要在操作系统和 NGINX 配置中增加可以排队等待 NGINX 接受的最大连接数。</p><pre tabindex=0><code>Current listen queue sizes (qlen/incqlen/maxqlen)
+Listen         Local Address         
+0/0/128        *.12345            
+192/0/128        *.80       
+0/0/128        *.8080
+</code></pre><h2 id=调整操作系统>调整操作系统</h2><p>将 net.core.somaxconn 内核参数的值从其默认值（128）增加到足以容纳大量流量的值。在这个例子中，它增加到 4096。</p><p>FreeBSD 的命令为 sudo sysctl kern.ipc.somaxconn=4096
+Linux 的命令为 1. sudo sysctl -w net.core.somaxconn=4096 2. 将 net.core.somaxconn = 4096 加入到 /etc/sysctl.conf 文件中。</p><h2 id=调整-nginx>调整 NGINX</h2><p>如果将 somaxconn 内核参数设置为大于 512 的值，请将 backlog 参数增加在 NGINX listen 指令以匹配修改：</p><pre tabindex=0><code>server {
+    listen 80 backlog=4096;
+    # ...
+
+}
+</code></pre><pre><code>[转自]Nginx静态文件服务配置及优化:http://dwz.win/DNZ</code></pre><ul class=pa0><li class="list di"><a href=/tags/nginx/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">nginx</a></li><li class="list di"><a href=/tags/centos7/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">centos7</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/format-disk-mount-disk/>格式化并挂载数据盘</a></li><li class=mb2><a href=/blog/centos7-install-mysql/>一步一步CentOS7 安装 MySQL5.7</a></li><li class=mb2><a href=/blog/nginx-redirect-80-to-443/>nginx 80端口重定向到443端口</a></li><li class=mb2><a href=/blog/centos7-sshd-port/>CentOS7修改服务器ssh端口号</a></li><li class=mb2><a href=/blog/centos7-firewalld/>CentOS7 firewall 开放端口和关闭防火墙</a></li><li class=mb2><a href=/blog/nginx-413-configuration/>nginx上传文件413错误</a></li><li class=mb2><a href=/blog/centos7-reset-root-password/>CentOS7 重置root密码</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>debug on 逆天改命</title><link>https://linkall.pub/tags/debug/</link><description>Recent content in debug on 逆天改命</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 27 Jul 2020 22:21:48 +0000</lastBuildDate><atom:link href="https://linkall.pub/tags/debug/index.xml" rel="self" type="application/rss+xml"/><item><title>zuul 自定义负载策略</title><link>https://linkall.pub/blog/zuul-ribbon-irule/</link><pubDate>Mon, 27 Jul 2020 22:21:48 +0000</pubDate><guid>https://linkall.pub/blog/zuul-ribbon-irule/</guid><description>定制IRule 使前后端开发可定制匹配, 学习并配置了网关的负载策略，zuul 底层使用的是 ribbon 的负载组件, ribbon 可以从 eureka 获取服务列表, 所以想要自定义负载, 得从 ribbon 入手, 查看并搜索 loadBalance 相关的类, 可以看到 AbstractLoadBalancerRule 这个类, 查看类树, 可以看到顶级接口为 IRule
+/** * 决定最终的服务提供者 */ public Server choose(Object key); /** * 设置负载均衡器 */ public void setLoadBalancer(ILoadBalancer lb); /** * 拿到负载均衡器 */ public ILoadBalancer getLoadBalancer(); debug 分析, 得知 ribbon 默认的负载策略为: ZoneAvoidanceRule, 这个类继承自 AbstractLoadBalancerRule, AbstractLoadBalancerRule中存在 ILoadBalancer 属性, 可以获取负载器, 负载器中又可以获取服务列表等信息
+所以我们只需要继承ZoneAvoidanceRule, 重写 choose 方法即可
+ribbon 默认的负载器为: DynamicServerListLoadBalancer, 其中包括节点健康状态服务支持, 节点状态的更新(ServerListUpdater), 负载策略, 可用区域的分析, 可以从此类详细了解 ribbon 的运行机制</description></item><item><title>无法开机 ,报 不可恢复的错误：securityagent无法创建所要求的机制teamviewerauthplugin:start</title><link>https://linkall.pub/blog/teamview-uninstall/</link><pubDate>Tue, 30 Jun 2020 22:39:31 +0000</pubDate><guid>https://linkall.pub/blog/teamview-uninstall/</guid><description>Mac os 10.15 使用CleanMyMac卸载TeamViewer后不能进入系统，报securityagent无法创建所要求的机制teamviewerauthplugin:start；
+修复步骤如下
+1、找个U盘或移动硬盘
+2、下载链接:
+链接: https://pan.baidu.com/s/10k-KvYceEy3IN0WKnoxN8w 提取码: ie6h 3、将下载好的TeamViewerAuthPlugin.bundle.tar.gz 复制到U盘或移动硬盘里；
+4、按住command + R 开机；
+5、先使用硬盘工具，将硬盘挂载上去，加密的硬盘，挂载时会提示你输入密码，输入你开机密码；
+6、退出硬盘工具，使用命令终端，进入命令操作界面（点击顶部菜单栏【实用工具】 中的 【终端】）；
+7、将刚才U盘或移动硬盘上的TeamViewerAuthPlugin.bundle.tar.gz，复制到/Volumes/Macintosh\ HD/Library/Security/SecurityAgentPlugins/目录下，Macintosh\ HD指的是你硬盘名；
+8、解压TeamViewerAuthPlugin.bundle.tar.gz，命令：
+tar -zxvf TeamViewerAuthPlugin.bundle.tar.gz 会生成一个TeamViewerAuthPlugin.bundle目录；确认 /Volumes/Macintosh\ HD/Library/Security/SecurityAgentPlugins/TeamViewerAuthPlugin.bundle是否已经有了；
+9、重启搞定</description></item><item><title>java:too many open files 解决办法</title><link>https://linkall.pub/blog/too-many-open-files/</link><pubDate>Sat, 13 Jun 2020 10:43:22 +0000</pubDate><guid>https://linkall.pub/blog/too-many-open-files/</guid><description>[TOC]
+产生原因 Linux 中,文件是一个字节序列。这种简单但强大的定义和它的实现使得系统中的所有东西都可以用文件来表示。这里提示的打开文件过多，不仅仅是普通的文件，也包括通讯链接socket，监听端口。这个错误通常是句柄数超出系统限制。
+引起的原因就是进程在某个时刻打开了超过系统限制的文件数量以及通讯链接数。
+通过命令ulimit -a可以查看当前系统设置的最大句柄数是多少： $ ulimit -a core file size (blocks, -c) 0 data seg size (kbytes, -d) unlimited scheduling priority (-e) 0 file size (blocks, -f) unlimited pending signals (-i) 15065 max locked memory (kbytes, -l) 64 max memory size (kbytes, -m) unlimited open files (-n) 1024 pipe size (512 bytes, -p) 8 POSIX message queues (bytes, -q) 819200 real-time priority (-r) 0 stack size (kbytes, -s) 8192 cpu time (seconds, -t) unlimited max user processes (-u) 15065 virtual memory (kbytes, -v) unlimited file locks (-x) unlimited open files那一行就代表系统目前允许单个进程打开的最大句柄数，这里是1024。</description></item></channel></rss>

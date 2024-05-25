@@ -1,0 +1,103 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>线上java程序CPU占用过高问题排查 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="查看系统状况 top 命令查看CPU、内存等使用情况 [root@DEV-L002323 ~]# top top - 14:52:54 up 514 days, 7:00, 8 users, load average: 2.85, 1.35, 1.62 Tasks: 147 total, 1 running, 146 sleeping, 0 stopped, 0 zombie Cpu(s): 57.6%us, 6.3%sy, 0.0%ni, 9.2%id, 26.2%wa, 0.0%hi, 0.0%si, 0.7%st Mem: 3922928k total, 3794232k used, 128696k free, 403112k buffers Swap: 4194296k total, 65388k used, 4128908k free, 1492204k cached PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND 6764 root 20 0 2428m 1."><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/troubleshooting-of-high-cpu-consumption-of-online-java-programs/><meta property="og:title" content="线上java程序CPU占用过高问题排查"><meta property="og:description" content="查看系统状况 top 命令查看CPU、内存等使用情况 [root@DEV-L002323 ~]# top top - 14:52:54 up 514 days, 7:00, 8 users, load average: 2.85, 1.35, 1.62 Tasks: 147 total, 1 running, 146 sleeping, 0 stopped, 0 zombie Cpu(s): 57.6%us, 6.3%sy, 0.0%ni, 9.2%id, 26.2%wa, 0.0%hi, 0.0%si, 0.7%st Mem: 3922928k total, 3794232k used, 128696k free, 403112k buffers Swap: 4194296k total, 65388k used, 4128908k free, 1492204k cached PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND 6764 root 20 0 2428m 1."><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/troubleshooting-of-high-cpu-consumption-of-online-java-programs/"><meta property="article:section" content="blog"><meta itemprop=name content="线上java程序CPU占用过高问题排查"><meta itemprop=description content="查看系统状况 top 命令查看CPU、内存等使用情况 [root@DEV-L002323 ~]# top top - 14:52:54 up 514 days, 7:00, 8 users, load average: 2.85, 1.35, 1.62 Tasks: 147 total, 1 running, 146 sleeping, 0 stopped, 0 zombie Cpu(s): 57.6%us, 6.3%sy, 0.0%ni, 9.2%id, 26.2%wa, 0.0%hi, 0.0%si, 0.7%st Mem: 3922928k total, 3794232k used, 128696k free, 403112k buffers Swap: 4194296k total, 65388k used, 4128908k free, 1492204k cached PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND 6764 root 20 0 2428m 1."><meta itemprop=wordCount content="611"><meta itemprop=keywords content="java,"><meta name=twitter:card content="summary"><meta name=twitter:title content="线上java程序CPU占用过高问题排查"><meta name=twitter:description content="查看系统状况 top 命令查看CPU、内存等使用情况 [root@DEV-L002323 ~]# top top - 14:52:54 up 514 days, 7:00, 8 users, load average: 2.85, 1.35, 1.62 Tasks: 147 total, 1 running, 146 sleeping, 0 stopped, 0 zombie Cpu(s): 57.6%us, 6.3%sy, 0.0%ni, 9.2%id, 26.2%wa, 0.0%hi, 0.0%si, 0.7%st Mem: 3922928k total, 3794232k used, 128696k free, 403112k buffers Swap: 4194296k total, 65388k used, 4128908k free, 1492204k cached PID USER PR NI VIRT RES SHR S %CPU %MEM TIME+ COMMAND 6764 root 20 0 2428m 1."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">线上java程序CPU占用过高问题排查</h1></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id=查看系统状况>查看系统状况</h2><ul><li>top 命令查看CPU、内存等使用情况</li></ul><pre tabindex=0><code>[root@DEV-L002323 ~]# top
+top - 14:52:54 up 514 days,  7:00,  8 users,  load average: 2.85, 1.35, 1.62
+Tasks: 147 total,   1 running, 146 sleeping,   0 stopped,   0 zombie
+Cpu(s): 57.6%us,  6.3%sy,  0.0%ni,  9.2%id, 26.2%wa,  0.0%hi,  0.0%si,  0.7%st
+Mem:   3922928k total,  3794232k used,   128696k free,   403112k buffers
+Swap:  4194296k total,    65388k used,  4128908k free,  1492204k cached
+
+  PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND                                                                     
+ 6764 root      20   0 2428m 1.1g  11m S 190.0 28.3  36:38.55 java                                                                       
+ 1161 root      20   0     0    0    0 D  0.3  0.0  32:43.06 flush-253:0                                                                 
+ 1512 root      20   0 14684 4188  488 S  0.3  0.1   0:16.12 sec_agent                                                                   
+    1 root      20   0 19356  652  436 S  0.0  0.0   0:16.64 init                                                                        
+    2 root      20   0     0    0    0 S  0.0  0.0   0:00.05 kthreadd                                                                    
+    3 root      RT   0     0    0    0 S  0.0  0.0   1:49.34 migration/0                                                                 
+    4 root      20   0     0    0    0 S  0.0  0.0  17:46.61 ksoftirqd/0                                                                 
+    5 root      RT   0     0    0    0 S  0.0  0.0   0:00.00 migration/0                                                                 
+    6 root      RT   0     0    0    0 S  0.0  0.0   2:02.78 watchdog/0                                                                  
+    7 root      RT   0     0    0    0 S  0.0  0.0   1:46.79 migration/1 
+</code></pre><p>从top命令的结果发现。pid为6764的java进程CPU利用持续占用过高,达到了190%。内存占用率为28.3%。</p><ul><li>定位问题线程</li></ul><p>使用ps -mp pid -o THREAD,tid,time命令查看该进程的线程情况，发现该进程的两个线程占用率很高</p><pre tabindex=0><code>[root@DEV-L002323 ~]# ps -mp 6764 -o THREAD,tid,time
+USER     %CPU PRI SCNT WCHAN  USER SYSTEM   TID     TIME
+root     71.7   -    - -         -      -     - 00:36:52
+root      0.0  19    - futex_    -      -  6764 00:00:00
+root      0.0  19    - poll_s    -      -  6765 00:00:01
+root     44.6  19    - futex_    -      -  6766 00:23:32
+root     44.6  19    - futex_    -      -  6767 00:23:32
+root      1.2  19    - futex_    -      -  6768 00:00:38
+root      0.0  19    - futex_    -      -  6769 00:00:00
+root      0.0  19    - futex_    -      -  6770 00:00:01
+root      0.0  19    - futex_    -      -  6771 00:00:00
+</code></pre><p>从上面可以看出6766和6767两个线程占用CPU大约有半个小时，每个线程的CPU利用率约为45%。接下来需要查看对应线程的问题堆栈
+下面就看看6766这个问题线程的堆栈</p><ul><li>查看问题线程堆栈
+将线程id转换为16进制</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>root@DEV-L002323 ~<span style=color:#f92672>]</span><span style=color:#75715e>#  printf &#34;%x\n&#34; 6766</span>
+</span></span><span style=display:flex><span>1a6e
+</span></span></code></pre></div><ul><li>jstack查看线程堆栈信息</li></ul><p>jstack命令打印线程堆栈信息，命令格式：<code>jstack pid |grep tid</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>root@DEV-L002323 ~<span style=color:#f92672>]</span><span style=color:#75715e># jstack 6764 | grep 1a6e</span>
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;GC task thread#0 (ParallelGC)&#34;</span> prio<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span> tid<span style=color:#f92672>=</span>0x00007ffeb8016800 nid<span style=color:#f92672>=</span>0x1a6e runnable
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;GC task thread#0 (ParallelGC)&#34;</span> prio<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span> tid<span style=color:#f92672>=</span>0x00007ffeb8016800 nid<span style=color:#f92672>=</span>0x1a6e runnable 
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;GC task thread#1 (ParallelGC)&#34;</span> prio<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span> tid<span style=color:#f92672>=</span>0x00007ffeb8016800 nid<span style=color:#f92672>=</span>0x1a6e runnable  
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#34;VM Periodic Task Thread&#34;</span> prio<span style=color:#f92672>=</span><span style=color:#ae81ff>10</span> tid<span style=color:#f92672>=</span>0x00007ffeb8016800 nid<span style=color:#f92672>=</span>0x3700 waiting on condition 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>JNI global references: <span style=color:#ae81ff>496</span>
+</span></span></code></pre></div><ul><li>jstat查看进程内存状况</li></ul><p>命令: <code>jstat -gcutil</code></p><pre tabindex=0><code>[root@DEV-L002323 bin]# jstat -gcutil 6764 2000 10
+  S0     S1     E      O      P     YGC     YGCT    FGC    FGCT     GCT   
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+  0.00   0.00  100.00 100.00  97.74   1863   33.937   310  453.788  487.726
+</code></pre><p>可以看出内存的年轻代和年老带的利用率都达到了惊人的100%。FGC的次数也特别多，并且在不断飙升。可以推断出程序肯定是在哪里的实现有问题，需要重点查看大对象或者异常多的对象信息。此时可以生成headdump文件拿到本地来分析</p><ul><li>jstack 和 jmap 分析进程堆栈和内存状况
+使用jmap命令导出heapdump文件，然后拿到本地使用jvisualvm.exe分析。</li></ul><p>命令: jmap [option] vmid</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>jmap -dump:format<span style=color:#f92672>=</span>b,file<span style=color:#f92672>=</span>dump.bin <span style=color:#ae81ff>6764</span>
+</span></span></code></pre></div><p>命令: jstack [option] vmid</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>jstack -l <span style=color:#ae81ff>6764</span> &gt;&gt; jstack.out
+</span></span></code></pre></div><p>从heapdump文件中定位到程序中的工作现场，和内存状况，如下：
+线程:</p><pre tabindex=0><code>&#34;Thread-21&#34; daemon prio=5 tid=85 WAITING
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:503)
+	at net.sf.jasperreports.engine.fill.AbstractThreadSubreportRunner.waitResult(AbstractThreadSubreportRunner.java:81)
+	   Local Variable: net.sf.jasperreports.engine.fill.ThreadExecutorSubreportRunner#2
+	at net.sf.jasperreports.engine.fill.AbstractThreadSubreportRunner.start(AbstractThreadSubreportRunner.java:53)
+	at net.sf.jasperreports.engine.fill.JRFillSubreport.prepare(JRFillSubreport.java:758)
+	at net.sf.jasperreports.engine.fill.JRFillElementContainer.prepareElements(JRFillElementContainer.java:331)
+	   Local Variable: net.sf.jasperreports.engine.fill.JRFillSubreport#3
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:384)
+	at net.sf.jasperreports.engine.fill.JRFillBand.fill(JRFillBand.java:358)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillBandNoOverflow(JRVerticalFiller.java:458)
+	   Local Variable: net.sf.jasperreports.engine.fill.JRFillBand#3
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillPageHeader(JRVerticalFiller.java:421)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillPageBreak(JRVerticalFiller.java:1954)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillColumnBreak(JRVerticalFiller.java:1981)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillDetail(JRVerticalFiller.java:754)
+	   Local Variable: net.sf.jasperreports.engine.fill.JRFillBand[]#1
+	   Local Variable: net.sf.jasperreports.engine.fill.JRFillBand#2
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReportStart(JRVerticalFiller.java:288)
+	at net.sf.jasperreports.engine.fill.JRVerticalFiller.fillReport(JRVerticalFiller.java:151)
+	at net.sf.jasperreports.engine.fill.JRBaseFiller.fill(JRBaseFiller.java:939)
+	at net.sf.jasperreports.engine.fill.JRFiller.fill(JRFiller.java:152)
+	   Local Variable: net.sf.jasperreports.engine.util.LocalJasperReportsContext#1
+	   Local Variable: net.sf.jasperreports.engine.fill.JRVerticalFiller#1
+	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:464)
+	at net.sf.jasperreports.engine.JasperFillManager.fill(JasperFillManager.java:300)
+	   Local Variable: java.io.File#135
+	   Local Variable: net.sf.jasperreports.engine.JasperFillManager#1
+	   Local Variable: net.sf.jasperreports.engine.JasperReport#1
+	at net.sf.jasperreports.engine.JasperFillManager.fillReport(JasperFillManager.java:757)
+	at com.pingan.icore.print.asyntask.jasper.AysnJasPdfConvertorThread.fill(AysnJasPdfConvertorThread.java:110)
+	   Local Variable: java.lang.String#57815
+	   Local Variable: java.lang.String#55498
+	   Local Variable: java.util.HashMap#1682
+	   Local Variable: java.lang.String#57807
+	   Local Variable: java.lang.String#57809
+	at com.pingan.icore.print.asyntask.jasper.AysnJasPdfConvertorThread.run(AysnJasPdfConvertorThread.java:223)
+	   Local Variable: java.io.File#139
+	   Local Variable: java.io.File#138
+	   Local Variable: java.io.File#137
+	   Local Variable: java.io.File#136
+	   Local Variable: com.pingan.icore.print.asyntask.jasper.AysnJasPdfConvertorThread#1
+	at java.lang.Thread.run(Thread.java:722)
+</code></pre><ul class=pa0><li class="list di"><a href=/tags/java/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">java</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/modify-jar-file/>jar：解压jar包更改文件后再重新打包</a></li><li class=mb2><a href=/blog/image-io-write-jpeg/>Java ImageIO 图片处理后变红 解决办法记录</a></li><li class=mb2><a href=/blog/find-java-install-path/>查看Java安装路径</a></li><li class=mb2><a href=/blog/conditionalonproperty-base-usage/>@ConditionalOnProperty来控制Configuration是否生效</a></li><li class=mb2><a href=/blog/zuul-ribbon-irule/>zuul 自定义负载策略</a></li><li class=mb2><a href=/blog/too-many-open-files/>java:too many open files 解决办法</a></li><li class=mb2><a href=/blog/mybatis-auto-id/>MyBatis获取插入记录的自增长字段值</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

@@ -1,0 +1,218 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="[TOC]
+uniapp-canvas-drawer uniapp-canvas-drawer是基于 kuckboy1994 的 mp_canvas_drawer 移植的 uni-app 版本。之后同步更新。
+下载地址 uniapp-canvas-drawer。
+当前环境下，大家都非常需要分享到朋友圈这个功能，但是实现起来各有心酸（坑比较多），所以才有了如下的 canvas 绘图工具。
+具有如下特性： 简单易用 一个 json 搞定绘制图片 功能全满足 90% 的使用场景 1、绘制文本（换行、超出内容省略号、中划线、下划线、文本加粗） 2、绘制图片 3、绘制矩形 4、保存图片 5、多图绘制 6、代码量小
+体验 git clone https://github.com/quanweiwang/uniapp-canvas-drawer 想在手机上使用配置自己的 appid 即可。
+使用 1、clone 到本地
+git clone https://github.com/quanweiwang/uniapp-canvas-drawer 2、把 components 中的 uniapp-canvas-drawer 拷贝到自己项目下。
+3、在 pages.json 使用页面注册组件
+{ &#34;path&#34;: &#34;pages/index/index&#34;, &#34;style&#34;: { &#34;navigationBarTitleText&#34;: &#34;uni-app&#34;, &#34;usingComponents&#34;: { &#34;canvasdrawer&#34;: &#34;/components/uniapp-canvas-drawer/uniapp-canvas-drawer&#34; } } } 4、在页面 **.vue 文件中加入如下代码
+<canvasdrawer painting=&#34;{{painting}}&#34; bind:getImage=&#34;eventGetImage&#34;/> painting 是需要传入的 json。 getImage 方法是绘图完成之后的回调函数，在 event."><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/uniapp-canvas-helper/><meta property="og:title" content="uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报"><meta property="og:description" content="[TOC]
+uniapp-canvas-drawer uniapp-canvas-drawer是基于 kuckboy1994 的 mp_canvas_drawer 移植的 uni-app 版本。之后同步更新。
+下载地址 uniapp-canvas-drawer。
+当前环境下，大家都非常需要分享到朋友圈这个功能，但是实现起来各有心酸（坑比较多），所以才有了如下的 canvas 绘图工具。
+具有如下特性： 简单易用 一个 json 搞定绘制图片 功能全满足 90% 的使用场景 1、绘制文本（换行、超出内容省略号、中划线、下划线、文本加粗） 2、绘制图片 3、绘制矩形 4、保存图片 5、多图绘制 6、代码量小
+体验 git clone https://github.com/quanweiwang/uniapp-canvas-drawer 想在手机上使用配置自己的 appid 即可。
+使用 1、clone 到本地
+git clone https://github.com/quanweiwang/uniapp-canvas-drawer 2、把 components 中的 uniapp-canvas-drawer 拷贝到自己项目下。
+3、在 pages.json 使用页面注册组件
+{ &#34;path&#34;: &#34;pages/index/index&#34;, &#34;style&#34;: { &#34;navigationBarTitleText&#34;: &#34;uni-app&#34;, &#34;usingComponents&#34;: { &#34;canvasdrawer&#34;: &#34;/components/uniapp-canvas-drawer/uniapp-canvas-drawer&#34; } } } 4、在页面 **.vue 文件中加入如下代码
+<canvasdrawer painting=&#34;{{painting}}&#34; bind:getImage=&#34;eventGetImage&#34;/> painting 是需要传入的 json。 getImage 方法是绘图完成之后的回调函数，在 event."><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/uniapp-canvas-helper/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2020-06-13T18:52:21+00:00"><meta property="article:modified_time" content="2020-06-13T18:52:21+00:00"><meta itemprop=name content="uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报"><meta itemprop=description content="[TOC]
+uniapp-canvas-drawer uniapp-canvas-drawer是基于 kuckboy1994 的 mp_canvas_drawer 移植的 uni-app 版本。之后同步更新。
+下载地址 uniapp-canvas-drawer。
+当前环境下，大家都非常需要分享到朋友圈这个功能，但是实现起来各有心酸（坑比较多），所以才有了如下的 canvas 绘图工具。
+具有如下特性： 简单易用 一个 json 搞定绘制图片 功能全满足 90% 的使用场景 1、绘制文本（换行、超出内容省略号、中划线、下划线、文本加粗） 2、绘制图片 3、绘制矩形 4、保存图片 5、多图绘制 6、代码量小
+体验 git clone https://github.com/quanweiwang/uniapp-canvas-drawer 想在手机上使用配置自己的 appid 即可。
+使用 1、clone 到本地
+git clone https://github.com/quanweiwang/uniapp-canvas-drawer 2、把 components 中的 uniapp-canvas-drawer 拷贝到自己项目下。
+3、在 pages.json 使用页面注册组件
+{ &#34;path&#34;: &#34;pages/index/index&#34;, &#34;style&#34;: { &#34;navigationBarTitleText&#34;: &#34;uni-app&#34;, &#34;usingComponents&#34;: { &#34;canvasdrawer&#34;: &#34;/components/uniapp-canvas-drawer/uniapp-canvas-drawer&#34; } } } 4、在页面 **.vue 文件中加入如下代码
+<canvasdrawer painting=&#34;{{painting}}&#34; bind:getImage=&#34;eventGetImage&#34;/> painting 是需要传入的 json。 getImage 方法是绘图完成之后的回调函数，在 event."><meta itemprop=datePublished content="2020-06-13T18:52:21+00:00"><meta itemprop=dateModified content="2020-06-13T18:52:21+00:00"><meta itemprop=wordCount content="401"><meta itemprop=keywords content="tools,uniapp,"><meta name=twitter:card content="summary"><meta name=twitter:title content="uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报"><meta name=twitter:description content="[TOC]
+uniapp-canvas-drawer uniapp-canvas-drawer是基于 kuckboy1994 的 mp_canvas_drawer 移植的 uni-app 版本。之后同步更新。
+下载地址 uniapp-canvas-drawer。
+当前环境下，大家都非常需要分享到朋友圈这个功能，但是实现起来各有心酸（坑比较多），所以才有了如下的 canvas 绘图工具。
+具有如下特性： 简单易用 一个 json 搞定绘制图片 功能全满足 90% 的使用场景 1、绘制文本（换行、超出内容省略号、中划线、下划线、文本加粗） 2、绘制图片 3、绘制矩形 4、保存图片 5、多图绘制 6、代码量小
+体验 git clone https://github.com/quanweiwang/uniapp-canvas-drawer 想在手机上使用配置自己的 appid 即可。
+使用 1、clone 到本地
+git clone https://github.com/quanweiwang/uniapp-canvas-drawer 2、把 components 中的 uniapp-canvas-drawer 拷贝到自己项目下。
+3、在 pages.json 使用页面注册组件
+{ &#34;path&#34;: &#34;pages/index/index&#34;, &#34;style&#34;: { &#34;navigationBarTitleText&#34;: &#34;uni-app&#34;, &#34;usingComponents&#34;: { &#34;canvasdrawer&#34;: &#34;/components/uniapp-canvas-drawer/uniapp-canvas-drawer&#34; } } } 4、在页面 **.vue 文件中加入如下代码
+<canvasdrawer painting=&#34;{{painting}}&#34; bind:getImage=&#34;eventGetImage&#34;/> painting 是需要传入的 json。 getImage 方法是绘图完成之后的回调函数，在 event."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报</h1><time class="f6 mv4 dib tracked" datetime=2020-06-13T18:52:21Z>June 13, 2020</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>[TOC]</p><h2 id=uniapp-canvas-drawer>uniapp-canvas-drawer</h2><p><code>uniapp-canvas-drawer</code>是基于 kuckboy1994 的 mp_canvas_drawer 移植的 uni-app 版本。之后同步更新。</p><p>下载地址 <a href=https://github.com/quanweiwang/uniapp-canvas-drawer/>uniapp-canvas-drawer</a>。</p><p>当前环境下，大家都非常需要分享到朋友圈这个功能，但是实现起来各有心酸（坑比较多），所以才有了如下的 canvas 绘图工具。</p><h2 id=具有如下特性>具有如下特性：</h2><ul><li>简单易用</li><li>一个 json 搞定绘制图片</li></ul><h2 id=功能全满足-90-的使用场景>功能全满足 90% 的使用场景</h2><p>1、绘制文本（换行、超出内容省略号、中划线、下划线、文本加粗）
+2、绘制图片
+3、绘制矩形
+4、保存图片
+5、多图绘制
+6、代码量小</p><h2 id=体验>体验</h2><pre tabindex=0><code>git clone https://github.com/quanweiwang/uniapp-canvas-drawer
+</code></pre><p>想在手机上使用配置自己的 appid 即可。</p><h2 id=使用>使用</h2><p>1、clone 到本地</p><pre tabindex=0><code>git clone https://github.com/quanweiwang/uniapp-canvas-drawer
+</code></pre><p>2、把 components 中的 uniapp-canvas-drawer 拷贝到自己项目下。</p><p>3、在 pages.json 使用页面注册组件</p><pre tabindex=0><code>{
+&#34;path&#34;: &#34;pages/index/index&#34;,
+    &#34;style&#34;: {
+        &#34;navigationBarTitleText&#34;: &#34;uni-app&#34;,
+        &#34;usingComponents&#34;: {
+            &#34;canvasdrawer&#34;: &#34;/components/uniapp-canvas-drawer/uniapp-canvas-drawer&#34;
+        }
+    }
+}
+</code></pre><p>4、在页面 **.vue 文件中加入如下代码</p><pre tabindex=0><code>&lt;canvasdrawer painting=&#34;{{painting}}&#34; bind:getImage=&#34;eventGetImage&#34;/&gt;
+</code></pre><p>painting 是需要传入的 json。 getImage 方法是绘图完成之后的回调函数，在 event.detail 中返回绘制完成的图片地址。
+当前栗子中的 painting 简单展示一下。详细配置请看 [API]</p><pre tabindex=0><code>  {
+    width: 375,
+    height: 555,
+    views: [
+      {
+        type: &#39;image&#39;,
+        url: &#39;https://hybrid.xiaoying.tv/miniprogram/viva-ad/1/1531103986231.jpeg&#39;,
+        top: 0,
+        left: 0,
+        width: 375,
+        height: 555
+      },
+      {
+        type: &#39;image&#39;,
+        url: &#39;https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83epJEPdPqQVgv6D8bojGT4DrGXuEC4Oe0GXs5sMsN4GGpCegTUsBgL9SPJkN9UqC1s0iakjQpwd4h4A/132&#39;,
+        top: 27.5,
+        left: 29,
+        width: 55,
+        height: 55
+      },
+      {
+        type: &#39;image&#39;,
+        url: &#39;https://hybrid.xiaoying.tv/miniprogram/viva-ad/1/1531401349117.jpeg&#39;,
+        top: 27.5,
+        left: 29,
+        width: 55,
+        height: 55
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;您的好友【kuckboy】&#39;,
+        fontSize: 16,
+        color: &#39;#402D16&#39;,
+        textAlign: &#39;left&#39;,
+        top: 33,
+        left: 96,
+        bolder: true
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;发现一件好货，邀请你一起0元免费拿！&#39;,
+        fontSize: 15,
+        color: &#39;#563D20&#39;,
+        textAlign: &#39;left&#39;,
+        top: 59.5,
+        left: 96
+      },
+      {
+        type: &#39;image&#39;,
+        url: &#39;https://hybrid.xiaoying.tv/miniprogram/viva-ad/1/1531385366950.jpeg&#39;,
+        top: 136,
+        left: 42.5,
+        width: 290,
+        height: 186
+      },
+      {
+        type: &#39;image&#39;,
+        url: &#39;https://hybrid.xiaoying.tv/miniprogram/viva-ad/1/1531385433625.jpeg&#39;,
+        top: 443,
+        left: 85,
+        width: 68,
+        height: 68
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;正品MAC魅可口红礼盒生日唇膏小辣椒Chili西柚情人&#39;,
+        fontSize: 16,
+        lineHeight: 21,
+        color: &#39;#383549&#39;,
+        textAlign: &#39;left&#39;,
+        top: 336,
+        left: 44,
+        width: 287,
+        MaxLineNumber: 2,
+        breakWord: true,
+        bolder: true
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;￥0.00&#39;,
+        fontSize: 19,
+        color: &#39;#E62004&#39;,
+        textAlign: &#39;left&#39;,
+        top: 387,
+        left: 44.5,
+        bolder: true
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;原价:￥138.00&#39;,
+        fontSize: 13,
+        color: &#39;#7E7E8B&#39;,
+        textAlign: &#39;left&#39;,
+        top: 391,
+        left: 110,
+        textDecoration: &#39;line-through&#39;
+      },
+      {
+        type: &#39;text&#39;,
+        content: &#39;长按识别图中二维码帮我砍个价呗~&#39;,
+        fontSize: 14,
+        color: &#39;#383549&#39;,
+        textAlign: &#39;left&#39;,
+        top: 460,
+        left: 165.5,
+        lineHeight: 20,
+        MaxLineNumber: 2,
+        breakWord: true,
+        width: 125
+      }
+    ]
+  }
+</code></pre><ul><li>API</li></ul><pre tabindex=0><code>{
+  width: 375,
+  height: 555,
+  views: [
+    {
+      type: &#39;image&#39;,
+      url: &#39;url&#39;,
+      top: 0,
+      left: 0,
+      width: 375,
+      height: 555
+    },
+    {
+      type: &#39;text&#39;,
+      content: &#39;content&#39;,
+      fontSize: 16,
+      color: &#39;#402D16&#39;,
+      textAlign: &#39;left&#39;,
+      top: 33,
+      left: 96,
+      bolder: true
+    },
+    {
+      type: &#39;rect&#39;,
+      background: &#39;color&#39;,
+      top: 0,
+      left: 0,
+      width: 375,
+      height: 555
+    }
+  ]
+}
+</code></pre><p>数据对象的第一层需要三个参数: width、height、mode、views。配置中所有的数字都是没有单位的。这就意味着 canvas 绘制的是一个比例图。具体显示的大小直接把返回的图片路径放置到 image 标签中即可。</p><p>mode 可选值有 same, 默认值为空，常规下尽量不要使用。如要使用请看 Q&amp;A的第1点。</p><p>当前可以绘制3种类型的配置: image、text、rect。配置的属性基本上使用的都是 css 的驼峰名称，还是比较好理解的。</p><ul><li><p>image（图片）
+<img src=http://www.wangquanwei.com/wp-content/uploads/2019/10/1571491779-C509C509-7570-4CBF-AF35-429ACD3882E6.jpeg alt=image></p></li><li><p>text（文本）
+<img src=http://www.wangquanwei.com/wp-content/uploads/2019/10/1571491829-A6CD7773-0577-4AF0-AC0A-E80BA92E0632.jpg alt=text></p></li><li><p>rect (矩形，线条)</p></li></ul><p><img src=http://www.wangquanwei.com/wp-content/uploads/2019/10/1571491861-8002F2FD-A8B4-4674-99F6-719A13F8711B.jpeg alt=rect></p><h2 id=qa>Q&amp;A</h2><ul><li>1、最佳实践
+绘制操作的时候最好 锁住屏幕 ，例如在点击绘制的时候</li></ul><pre tabindex=0><code>uni.showLoading({
+    title: &#39;绘制分享图片中&#39;,
+    mask: true
+})
+</code></pre><p>绘制完成之后</p><pre tabindex=0><code>uni.hideLoading()
+</code></pre><p>具体可以参考项目下的<code>/pages/index/index.vue</code></p><ul><li>2、二维码和小程序码如何绘制？</li></ul><p>二维码和小程序码可以通过调用微信官方的接口产生，需要后端配合。然后走 type: image 类型进行绘制即可。</p><ul><li><p>3、绘制流程相关
+<code>views</code> 数组中的顺序代表绘画的<code>先后顺序</code>，会有覆盖的现象。请各位使用者注意。</p></li><li><p>4、如何实现圆形头像？</p></li></ul><p>由于完成一些效果，例如： 文字下划线 等。必须要使用微信小程序 rect 相关的接口，和 clip 接口感觉相处的不好（存在bug）。可以查看 微信小程序社区的帖子。</p><p>so，提供一种解决方式：<strong>使用一张中间镂空的图片盖在头像上</strong>。</p><ul><li>5、canvas drawer 组件为什么不直接显示 canvas 画板和其内容呢？
+考虑到大部分场景，我们都是用来把图片保存到本地，或用以展示。
+保存到本地，返回临时文件给调用者一定是最佳的解决方式。
+展示，转化成图片之后，就可以使用 image 基础组件的所有显示模式了，还能设置宽高。</li></ul><h2 id=我的问题及解决办法>我的问题及解决办法</h2><p>跑了一下博主的demo，没问题；把demo移植到我的小程序，没问题；但是就是把相应代码贴到我要用的页面，出现了问题，初步判断是<code>painting</code>的<code>watch</code>没有执行，后来在我需要的页面导入了组件<code>@/components/uniapp-canvas-drawer/uniapp-canvas-drawer</code>
+ps：page.json里写得有问题，疏忽了，看了好几遍，第二天才看出来。可能第一天太累了</p><p>转载自</p><ul><li><a href=http://dwz.date/bbrQ>uni-app上canvas绘制图片助手，一个json就制作分享朋友圈海报</a></li></ul><ul class=pa0><li class="list di"><a href=/tags/tools/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">tools</a></li><li class="list di"><a href=/tags/uniapp/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">uniapp</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/too-many-open-files/>java:too many open files 解决办法</a></li><li class=mb2><a href=/blog/uniapp-multi-lang/>uniapp 使用 i18n 实现多语言切换</a></li><li class=mb2><a href=/blog/apache-maven-source-plugin-usage/>Apache Maven Source Plugin-Maven打包源码到私服</a></li><li class=mb2><a href=/blog/check-port/>各个系统查看端口情况的方法</a></li><li class=mb2><a href=/blog/mysql-dump-usage/>使用mysqldump导出mysql表结构和表数据</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

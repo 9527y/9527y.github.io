@@ -1,0 +1,84 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>CentOS 7 配置 Supervisor | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="Supervisor 的文档地址：http://www.supervisord.org/
+安装 Supervisor yum install -y epel-release yum install -y supervisor 2. 配置 Supervisor Supervisor 的配置文件为：/etc/supervisord.conf ，Supervisor 所管理的应用的配置文件放在 /etc/supervisord.d/ 目录中，这个目录可以在 supervisord.conf 中配置。
+启动 Supervisor supervisord -c /etc/supervisor.conf 通过这种方式启动，服务器重启后 Supervisor 不会自动启动，不建议使用这种方式启动Supervisor。
+安装 Supervisor 后，在 /usr/lib/systemd/system/ 目录中会有一个 supervisord.service 文件，用下面的内容替换：
+# supervisord service for sysstemd (CentOS 7.0+) # by ET-CS (https://github.com/ET-CS) [Unit] Description=Supervisor daemon [Service] Type=forking ExecStart=/usr/bin/supervisord ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl $OPTIONS reload KillMode=process Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target 启用开机启动
+systemctl enable supervisord.service 启动Supervisor"><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/supervisor-handbook/><meta property="og:title" content="CentOS 7 配置 Supervisor"><meta property="og:description" content="Supervisor 的文档地址：http://www.supervisord.org/
+安装 Supervisor yum install -y epel-release yum install -y supervisor 2. 配置 Supervisor Supervisor 的配置文件为：/etc/supervisord.conf ，Supervisor 所管理的应用的配置文件放在 /etc/supervisord.d/ 目录中，这个目录可以在 supervisord.conf 中配置。
+启动 Supervisor supervisord -c /etc/supervisor.conf 通过这种方式启动，服务器重启后 Supervisor 不会自动启动，不建议使用这种方式启动Supervisor。
+安装 Supervisor 后，在 /usr/lib/systemd/system/ 目录中会有一个 supervisord.service 文件，用下面的内容替换：
+# supervisord service for sysstemd (CentOS 7.0+) # by ET-CS (https://github.com/ET-CS) [Unit] Description=Supervisor daemon [Service] Type=forking ExecStart=/usr/bin/supervisord ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl $OPTIONS reload KillMode=process Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target 启用开机启动
+systemctl enable supervisord.service 启动Supervisor"><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/supervisor-handbook/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2020-11-21T11:58:04+00:00"><meta property="article:modified_time" content="2020-11-21T11:58:04+00:00"><meta itemprop=name content="CentOS 7 配置 Supervisor"><meta itemprop=description content="Supervisor 的文档地址：http://www.supervisord.org/
+安装 Supervisor yum install -y epel-release yum install -y supervisor 2. 配置 Supervisor Supervisor 的配置文件为：/etc/supervisord.conf ，Supervisor 所管理的应用的配置文件放在 /etc/supervisord.d/ 目录中，这个目录可以在 supervisord.conf 中配置。
+启动 Supervisor supervisord -c /etc/supervisor.conf 通过这种方式启动，服务器重启后 Supervisor 不会自动启动，不建议使用这种方式启动Supervisor。
+安装 Supervisor 后，在 /usr/lib/systemd/system/ 目录中会有一个 supervisord.service 文件，用下面的内容替换：
+# supervisord service for sysstemd (CentOS 7.0+) # by ET-CS (https://github.com/ET-CS) [Unit] Description=Supervisor daemon [Service] Type=forking ExecStart=/usr/bin/supervisord ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl $OPTIONS reload KillMode=process Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target 启用开机启动
+systemctl enable supervisord.service 启动Supervisor"><meta itemprop=datePublished content="2020-11-21T11:58:04+00:00"><meta itemprop=dateModified content="2020-11-21T11:58:04+00:00"><meta itemprop=wordCount content="290"><meta itemprop=keywords content="supervisor,"><meta name=twitter:card content="summary"><meta name=twitter:title content="CentOS 7 配置 Supervisor"><meta name=twitter:description content="Supervisor 的文档地址：http://www.supervisord.org/
+安装 Supervisor yum install -y epel-release yum install -y supervisor 2. 配置 Supervisor Supervisor 的配置文件为：/etc/supervisord.conf ，Supervisor 所管理的应用的配置文件放在 /etc/supervisord.d/ 目录中，这个目录可以在 supervisord.conf 中配置。
+启动 Supervisor supervisord -c /etc/supervisor.conf 通过这种方式启动，服务器重启后 Supervisor 不会自动启动，不建议使用这种方式启动Supervisor。
+安装 Supervisor 后，在 /usr/lib/systemd/system/ 目录中会有一个 supervisord.service 文件，用下面的内容替换：
+# supervisord service for sysstemd (CentOS 7.0+) # by ET-CS (https://github.com/ET-CS) [Unit] Description=Supervisor daemon [Service] Type=forking ExecStart=/usr/bin/supervisord ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown ExecReload=/usr/bin/supervisorctl $OPTIONS reload KillMode=process Restart=on-failure RestartSec=42s [Install] WantedBy=multi-user.target 启用开机启动
+systemctl enable supervisord.service 启动Supervisor"></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">CentOS 7 配置 Supervisor</h1><time class="f6 mv4 dib tracked" datetime=2020-11-21T11:58:04Z>November 21, 2020</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>Supervisor 的文档地址：http://www.supervisord.org/</p><h2 id=安装-supervisor>安装 Supervisor</h2><pre tabindex=0><code>yum install -y epel-release
+yum install -y supervisor
+</code></pre><h3 id=2-配置-supervisor>2. 配置 Supervisor</h3><p>Supervisor 的配置文件为：<code>/etc/supervisord.conf</code> ，Supervisor 所管理的应用的配置文件放在 <code>/etc/supervisord.d/</code> 目录中，这个目录可以在 supervisord.conf 中配置。</p><h4 id=启动-supervisor>启动 Supervisor</h4><pre tabindex=0><code>supervisord -c /etc/supervisor.conf
+</code></pre><p>通过这种方式启动，服务器重启后 Supervisor 不会自动启动，不建议使用这种方式启动Supervisor。</p><p>安装 Supervisor 后，在 <code>/usr/lib/systemd/system/</code> 目录中会有一个 <code>supervisord.service</code> 文件，用下面的内容替换：</p><pre tabindex=0><code># supervisord service for sysstemd (CentOS 7.0+)
+# by ET-CS (https://github.com/ET-CS)
+[Unit]
+Description=Supervisor daemon
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/supervisord
+ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/bin/supervisorctl $OPTIONS reload
+KillMode=process
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p><strong>启用开机启动</strong></p><pre tabindex=0><code>systemctl enable supervisord.service
+</code></pre><p><strong>启动Supervisor</strong></p><pre tabindex=0><code>systemctl start supervisord.service
+</code></pre><p><strong>查看Supervisor状态</strong></p><pre tabindex=0><code>systemctl status supervisord.service
+</code></pre><pre tabindex=0><code>[root@web rainbow]# systemctl status supervisord.service
+● supervisord.service - Supervisor daemon
+   Loaded: loaded (/usr/lib/systemd/system/supervisord.service; enabled; vendor preset: disabled)
+   Active: active (running) since 六 2020-11-21 11:33:35 CST; 22min ago
+  Process: 25223 ExecStart=/usr/bin/supervisord (code=exited, status=0/SUCCESS)
+ Main PID: 25226 (supervisord)
+   CGroup: /system.slice/supervisord.service
+           ├─25226 /usr/bin/python /usr/bin/supervisord
+</code></pre><p>如果在启动的时候遇到如下错误：</p><p>Another program is already listening on a port that one of our HTTP servers is configured to use. Shut this program</p><p>使用以下命令：</p><pre tabindex=0><code>find / -name supervisor.sock
+</code></pre><p>找到supervisor.sock，然后unlink即可</p><pre tabindex=0><code>unlink /path/supervisor.sock
+</code></pre><h3 id=3-应用配置>3. 应用配置</h3><p>Supervisor 管理应用的进程，需要对每个应用进行配置。在 <code>/etc/supervisor.d</code> 中创建 <code>helloworld.ini</code>，每个应用对应一个配置文件即可。</p><p>下面是配置文件的示例：</p><pre tabindex=0><code>[program:helloworld]  ;程序的名称
+command = dotnet HelloWorld.dll ;执行的命令
+directory = /root/www/ ;命令执行的目录
+environment = ASPNETCORE__ENVIRONMENT=Production  ;环境变量
+user = root  ;执行进程的用户
+stopsignal = INT  
+autostart = true  ;是否自动启动
+autorestart = true  ;是否自动重启
+startsecs = 1  ;自动重启间隔
+stderr_logfile = /var/log/helloworld.err.log  ;标准错误日志
+stdout_logfile = /var/log/helloworld.out.log  ;标准输出日志
+</code></pre><p>创建好配置文件后，重启 Supervisor</p><pre tabindex=0><code>supervisorctl reload
+</code></pre><p>或热重启，不会重启其他子进程</p><pre tabindex=0><code>supervisorctl reread
+
+supervisorctl update
+</code></pre><p>为确保没有错误，可以正常启动，使用前文提到的查看Supervisor状态的命令查看。或者查看要管理的进程是否启动，本例中可以使用下面的命令：</p><pre tabindex=0><code>ps -ef | grep HelloWorld.dll
+
+或
+ps -ef | grep dotnet
+</code></pre><h3 id=4-supervisor-管理进程>4. Supervisor 管理进程</h3><p>有两种方式可以管理进程，命令行和Web管理。</p><p><strong>命令行</strong></p><pre tabindex=0><code>supervisorctl shutdown #关闭所有任务
+
+supervisorctl stop|start program_name
+
+supervisorctl status #查看所有任务状态
+</code></pre><p><strong>Web管理</strong></p><p>启用 Web 管理，首先将 <code>/etc/supervisord.conf</code> 配置文件中的 <code>inet_http_server</code> 节点取消注释。</p><pre tabindex=0><code>[inet_http_server]         ; inet (TCP) server disabled by default
+port=127.0.0.1:9001        ; (ip_address:port specifier, *:port for all iface)
+username=admin              ; (default is no username (open server))
+password=admin123              ; (default is no password (open server))
+</code></pre><p>修改后重启 Supervisor</p><pre tabindex=0><code>supervisorctl reload
+</code></pre><p>在浏览器中打开地址，如下图所示。</p><p><img src=https://image.75051685.xyz/blog/image_1605931055817.png alt=Supervisor.png></p><p>下面是第三方Supervisor的Web管理工具：</p><p>cesi : <a href=https://github.com/Gamegos/cesi>https://github.com/Gamegos/cesi</a></p><p>suponoff: <a href=https://github.com/GambitResearch/suponoff>https://github.com/GambitResearch/suponoff</a></p><p>gosuv: <a href=https://github.com/codeskyblue/gosuv>https://github.com/codeskyblue/gosuv</a></p><p>supervisord-monitor: <a href=https://github.com/mlazarov/supervisord-monitor>https://github.com/mlazarov/supervisord-monitor</a></p><p>supervisord-monitor改进版：https://github.com/WisZhou/supervisord-monitor</p><ul class=pa0><li class="list di"><a href=/tags/supervisor/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">supervisor</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

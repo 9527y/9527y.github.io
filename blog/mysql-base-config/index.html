@@ -1,0 +1,59 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>MySQL初始化基础配置 | 逆天改命</title><meta name=google-adsense-account content="ca-pub-7732072032123305"><meta name=viewport content="width=device-width,minimum-scale=1"><meta name=keywords content><meta name=description content="CentOS7安装Mysql5.7 https://75051685.xyz/archives/centos7-install-mysql
+修改编码：/etc/my.cnf
+[client] default-character-set = utf8 [mysqld] default-storage-engine = INNODB character-set-server = utf8 collation-server = utf8_general_ci # 不区分大小写 collation-server = utf8_bin # 区分大小写 collation-server = utf8_unicode_ci # 比 utf8_general_ci 更准确 lower_case_table_names=2 # 表名区分大小写 max_connections=1000 # 最大连接数 创建数据库和用户 # 创建数据库，编码utf8 CREATE DATABASE <datebasename> CHARACTER SET utf8; # 创建用户，指定用户名，密码，访问主机 CREATE USER 'username'@'host' IDENTIFIED BY 'password'; # 设置权限 GRANT privileges ON databasename.tablename TO 'username'@'host'; # 显示权限 SHOW GRANTS FOR 'username'@'host'; # 回收用户权限 REVOKE privilege ON databasename."><meta name=generator content="Hugo 0.119.0"><meta name=robots content="noindex, nofollow"><link rel=stylesheet href=/ananke/css/main.min.css><link rel=canonical href=https://linkall.pub/blog/mysql-base-config/><meta property="og:title" content="MySQL初始化基础配置"><meta property="og:description" content="CentOS7安装Mysql5.7 https://75051685.xyz/archives/centos7-install-mysql
+修改编码：/etc/my.cnf
+[client] default-character-set = utf8 [mysqld] default-storage-engine = INNODB character-set-server = utf8 collation-server = utf8_general_ci # 不区分大小写 collation-server = utf8_bin # 区分大小写 collation-server = utf8_unicode_ci # 比 utf8_general_ci 更准确 lower_case_table_names=2 # 表名区分大小写 max_connections=1000 # 最大连接数 创建数据库和用户 # 创建数据库，编码utf8 CREATE DATABASE <datebasename> CHARACTER SET utf8; # 创建用户，指定用户名，密码，访问主机 CREATE USER 'username'@'host' IDENTIFIED BY 'password'; # 设置权限 GRANT privileges ON databasename.tablename TO 'username'@'host'; # 显示权限 SHOW GRANTS FOR 'username'@'host'; # 回收用户权限 REVOKE privilege ON databasename."><meta property="og:type" content="article"><meta property="og:url" content="https://linkall.pub/blog/mysql-base-config/"><meta property="article:section" content="blog"><meta property="article:published_time" content="2020-06-01T05:44:28+00:00"><meta property="article:modified_time" content="2020-06-01T05:44:28+00:00"><meta itemprop=name content="MySQL初始化基础配置"><meta itemprop=description content="CentOS7安装Mysql5.7 https://75051685.xyz/archives/centos7-install-mysql
+修改编码：/etc/my.cnf
+[client] default-character-set = utf8 [mysqld] default-storage-engine = INNODB character-set-server = utf8 collation-server = utf8_general_ci # 不区分大小写 collation-server = utf8_bin # 区分大小写 collation-server = utf8_unicode_ci # 比 utf8_general_ci 更准确 lower_case_table_names=2 # 表名区分大小写 max_connections=1000 # 最大连接数 创建数据库和用户 # 创建数据库，编码utf8 CREATE DATABASE <datebasename> CHARACTER SET utf8; # 创建用户，指定用户名，密码，访问主机 CREATE USER 'username'@'host' IDENTIFIED BY 'password'; # 设置权限 GRANT privileges ON databasename.tablename TO 'username'@'host'; # 显示权限 SHOW GRANTS FOR 'username'@'host'; # 回收用户权限 REVOKE privilege ON databasename."><meta itemprop=datePublished content="2020-06-01T05:44:28+00:00"><meta itemprop=dateModified content="2020-06-01T05:44:28+00:00"><meta itemprop=wordCount content="173"><meta itemprop=keywords content="mysql,"><meta name=twitter:card content="summary"><meta name=twitter:title content="MySQL初始化基础配置"><meta name=twitter:description content="CentOS7安装Mysql5.7 https://75051685.xyz/archives/centos7-install-mysql
+修改编码：/etc/my.cnf
+[client] default-character-set = utf8 [mysqld] default-storage-engine = INNODB character-set-server = utf8 collation-server = utf8_general_ci # 不区分大小写 collation-server = utf8_bin # 区分大小写 collation-server = utf8_unicode_ci # 比 utf8_general_ci 更准确 lower_case_table_names=2 # 表名区分大小写 max_connections=1000 # 最大连接数 创建数据库和用户 # 创建数据库，编码utf8 CREATE DATABASE <datebasename> CHARACTER SET utf8; # 创建用户，指定用户名，密码，访问主机 CREATE USER 'username'@'host' IDENTIFIED BY 'password'; # 设置权限 GRANT privileges ON databasename.tablename TO 'username'@'host'; # 显示权限 SHOW GRANTS FOR 'username'@'host'; # 回收用户权限 REVOKE privilege ON databasename."></head><body class="ma0 avenir bg-near-white"><header><div class=bg-black><nav class="pv3 ph3 ph4-ns" role=navigation><div class="flex-l justify-between items-center center"><a href=/ class="f3 fw2 hover-white no-underline white-90 dib">逆天改命</a><div class="flex-l items-center"><div class=ananke-socials></div></div></div></nav></div></header><main class=pb7 role=main><article class="flex-l flex-wrap justify-between mw8 center ph3"><header class="mt4 w-100"><aside class="instapaper_ignoref b helvetica tracked ttu">Blogs</aside><div id=sharing class="mt3 ananke-socials"></div><h1 class="f1 athelas mt3 mb1">MySQL初始化基础配置</h1><time class="f6 mv4 dib tracked" datetime=2020-06-01T05:44:28Z>June 1, 2020</time></header><div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id=centos7安装mysql57>CentOS7安装Mysql5.7</h2><p><a href=https://75051685.xyz/archives/centos7-install-mysql>https://75051685.xyz/archives/centos7-install-mysql</a></p><p>修改编码：/etc/my.cnf</p><pre tabindex=0><code>[client]
+default-character-set = utf8
+
+[mysqld]
+default-storage-engine = INNODB
+character-set-server = utf8
+collation-server = utf8_general_ci # 不区分大小写
+collation-server =  utf8_bin    # 区分大小写
+collation-server = utf8_unicode_ci # 比 utf8_general_ci 更准确
+lower_case_table_names=2        # 表名区分大小写
+max_connections=1000            # 最大连接数
+</code></pre><h2 id=创建数据库和用户>创建数据库和用户</h2><pre tabindex=0><code># 创建数据库，编码utf8
+CREATE DATABASE &lt;datebasename&gt; CHARACTER SET utf8;
+
+# 创建用户，指定用户名，密码，访问主机
+CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;
+
+# 设置权限
+GRANT privileges ON databasename.tablename TO &#39;username&#39;@&#39;host&#39;;
+
+# 显示权限
+SHOW GRANTS FOR &#39;username&#39;@&#39;host&#39;;
+
+# 回收用户权限
+REVOKE privilege ON databasename.tablename FROM &#39;username&#39;@&#39;host&#39;;
+
+# 删除用户
+DROP USER &#39;username&#39;@&#39;host&#39;;
+</code></pre><p>用户权限常用的有：</p><p>SELECT，INSERT，UPDATE，全部则用 ALL</p><h2 id=常用sql语句>常用sql语句：</h2><pre tabindex=0><code># 创建数据库，编码utf8
+CREATE DATABASE &lt;datebasename&gt; CHARACTER SET utf8;
+
+# 创建用户，指定用户名，密码，访问主机
+CREATE USER &#39;username&#39;@&#39;host&#39; IDENTIFIED BY &#39;password&#39;;
+
+# root用户设置远程访问权限，并且刷新授权
+GRANT ALL PRIVILEGES ON *.* TO &#39;root&#39;@&#39;%&#39; IDENTIFIED BY &#39;mypassword&#39; WITH GRANT OPTION;  
+FLUSH   PRIVILEGES; 
+
+# alexdev用户赋予只读权限
+GRANT select  ON *.* TO &#39;alexdev&#39;@&#39;%&#39; IDENTIFIED BY &#39;alexdev&#39; WITH GRANT OPTION;
+FLUSH   PRIVILEGES; 
+如果如下提示，说明需要先重置一下密码。有可能本次登录使用的是临时密码登录。
+ERROR 1820 (HY000): You must reset your password using ALTER USER statement before executing this statement.
+</code></pre><h2 id=重置密码>重置密码：</h2><pre tabindex=0><code>mysql&gt; set password = password(&#39;123456&#39;);
+</code></pre><h2 id=调整时区>调整时区</h2><pre tabindex=0><code>cp  /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
+
+yum install ntp -y &amp;&amp; ntpdate pool.ntp.org 
+</code></pre><h2 id=更改mysql数据文件权限>更改mysql数据文件权限</h2><pre tabindex=0><code>chown -R mysql:mysql /var/lib/mysql
+</code></pre><ul class=pa0><li class="list di"><a href=/tags/mysql/ class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">mysql</a></li></ul><div class="mt6 instapaper_ignoref"></div></div><aside class="w-30-l mt6-l"><div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links"><p class="f5 b mb3">Related</p><ul class="pa0 list"><li class=mb2><a href=/blog/centos7-install-mysql/>一步一步CentOS7 安装 MySQL5.7</a></li><li class=mb2><a href=/blog/mysql-sql-monitor/>使用general_log来对Mysql SQL语句监控查看的记录</a></li><li class=mb2><a href=/blog/mysql-dump-usage/>使用mysqldump导出mysql表结构和表数据</a></li><li class=mb2><a href=/blog/mysql-view-database-table-capacity/>MySQL查看数据库表容量大小</a></li></ul></div></aside><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7732072032123305" crossorigin=anonymous></script>
+<ins class=adsbygoogle style=display:block data-ad-client=ca-pub-7732072032123305 data-ad-slot=6735921740 data-ad-format=auto data-full-width-responsive=true></ins>
+<script>(adsbygoogle=window.adsbygoogle||[]).push({})</script></article></main><footer class="bg-black bottom-0 w-100 pa3" role=contentinfo><div class="flex justify-between"><a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href=https://linkall.pub/>&copy; 逆天改命 2024</a><div><div class=ananke-socials></div></div></div></footer></body></html>

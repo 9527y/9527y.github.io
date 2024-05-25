@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>usage on 逆天改命</title><link>https://linkall.pub/tags/usage/</link><description>Recent content in usage on 逆天改命</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 31 May 2020 18:33:22 +0000</lastBuildDate><atom:link href="https://linkall.pub/tags/usage/index.xml" rel="self" type="application/rss+xml"/><item><title>php-fpm 报错500排查</title><link>https://linkall.pub/blog/how-to-debug-php-fpm-500/</link><pubDate>Sun, 31 May 2020 18:33:22 +0000</pubDate><guid>https://linkall.pub/blog/how-to-debug-php-fpm-500/</guid><description>TOC
+php-fpm 报错500 php-fpm报错500，使用nginx转发，同时有没有日志。
+思路将错误暴露出来：
+使用phpinfo将php.ini的路径找出 新建一个页面，内容如下：
+&amp;lt;?php phpinfo(); ?&amp;gt; 找到php.ini的位置：
+/usr/local/php/etc/php.ini 编辑php.ini 查找 display_errors，将配置改为On，即为显示错误。
+display_errors = On 记得处理好问题后改回去。</description></item><item><title>使用general_log来对Mysql SQL语句监控查看的记录</title><link>https://linkall.pub/blog/mysql-sql-monitor/</link><pubDate>Sun, 31 May 2020 18:27:22 +0000</pubDate><guid>https://linkall.pub/blog/mysql-sql-monitor/</guid><description>查看日志位置：
+show global variables like '%general%'; +——————+———-+ |Variable_name|Value| +——————+———-+ |general_log|OFF| |general_log_file|/data0/logs/mysql/general.log| +——————+———-+ 设置 SET GLOBAL general_log = 'ON';
+使用tail -f 日志位置 查看即时日志。
+临时开启日志记录
+set global general_log='ON'; 这时执行的所有sql都会被记录下来，但是如果重启mysql就会停止记录需要重新设置
+查看日志
+tail -f /data0/logs/mysql/general.log 查看全部
+cat /data0/logs/mysql/general.log 查看是否开启binlog
+show variables like “log_bin” ; 查看当前的binlog日志
+show master status ;</description></item><item><title>pinpoint，HBase数据清理</title><link>https://linkall.pub/blog/pinpoint-hbase-data-clean/</link><pubDate>Fri, 29 May 2020 18:29:40 +0000</pubDate><guid>https://linkall.pub/blog/pinpoint-hbase-data-clean/</guid><description>[toc]
+HBASE数据清理 pinpoint使用HBASE储存数据，对于HBase进行数据清理。
+HBase shell 进入HBASE目录，执行如下命令，进入shell
+bin/hbase shell 查看表信息 查看HBASE表:
+hbase(main):001:0&amp;gt; list TABLE AgentEvent AgentInfo AgentLifeCycle AgentStatV2 ApiMetaData ApplicationIndex ApplicationMapStatisticsCallee_Ver2 ApplicationMapStatisticsCaller_Ver2 ApplicationMapStatisticsSelf_Ver2 ApplicationStatAggre ApplicationTraceIndex HostApplicationMap_Ver2 SqlMetaData_Ver2 StringMetaData TraceV2 15 row(s) in 0.2120 seconds 查看表描述 查看表描述，里面有个TTL值，代表数据存储时长
+hbase(main):002:0&amp;gt; desc &amp;#39;AgentInfo&amp;#39; Table AgentInfo is ENABLED AgentInfo COLUMN FAMILIES DESCRIPTION { NAME =&amp;gt; &amp;#39;Info&amp;#39;, BLOOMFILTER =&amp;gt; &amp;#39;ROW&amp;#39;, VERSIONS =&amp;gt; &amp;#39;1&amp;#39;, IN_MEMORY =&amp;gt; &amp;#39;false&amp;#39;, KEEP_DELETED_CELLS =&amp;gt; &amp;#39;FALSE&amp;#39;, DATA_BLOCK_ENCODING =&amp;gt; &amp;#39;PREFIX&amp;#39;, TTL =&amp;gt; &amp;#39;31536000 SECONDS (365 DAYS)&amp;#39;, COMPRESSION =&amp;gt; &amp;#39;NONE&amp;#39;, MIN_VERSIONS =&amp;gt; &amp;#39;0&amp;#39;, BLOCKCACHE =&amp;gt; &amp;#39;true&amp;#39;, BLOCKSIZE =&amp;gt; &amp;#39;65536&amp;#39;, REPLICATION_SCOPE =&amp;gt; &amp;#39;0&amp;#39;} 1 row(s) in 0.</description></item><item><title>foobar2000播放的一些使用技巧</title><link>https://linkall.pub/blog/foobar2000-tips/</link><pubDate>Tue, 26 May 2020 18:31:03 +0000</pubDate><guid>https://linkall.pub/blog/foobar2000-tips/</guid><description>听ape音乐，cue乱码或者找不到文件，ftp无法上传的解决办法：
+第一种情况，找不到文件 我用iPhone手机播放的时候，提示找不到，看了一下提示，是路径问题。将ape文件，和cue放在同一目录；同时将FILE使用相对路径，./开头加文件名即可。
+PERFORMER &amp;#34;BEYOND&amp;#34; TITLE &amp;#34;BEYOND珍藏版CD2&amp;#34; FILE &amp;#34;./BEYOND.CD2.ape&amp;#34; WAVE TRACK 01 AUDIO 第二种情况，找到文件之后，播放列表是乱码 如果用记事本文件打开是正常的显示，只是放入手机中是乱码，则可以更改文件编码格式即可。推荐使用vscode，简单易用。更改编码为UTF-8 with BOM
+无法上传到媒体库 对于IPhone使用foobar2000，无法上传情况实际上是foobar安装后，未有网络权限，简单的办法可以触发Foobar2000在iPhone上网络权限开关的方法如下：在Browse界面，选择Media Servers，然后Add new添加一个新的服务器，例如随便输入一个ftp服务器，比如： ftp://192.168.2.1 接下来就会弹出网络授权按钮，允许后，再去开启FTP服务，就可以通过电脑端访问Foobar2000手机版的FTP服务并且传文件到手机了。</description></item><item><title>使用Docker在内网搭建DNS服务器</title><link>https://linkall.pub/blog/docker-dnsmasq-usage/</link><pubDate>Tue, 26 May 2020 18:22:39 +0000</pubDate><guid>https://linkall.pub/blog/docker-dnsmasq-usage/</guid><description>dnsmasq 搭建web配置界面 使用jpillora提供的docker镜像。
+用法 创建一个配置文件/opt/dnsmasq.conf，如下为demo
+#dnsmasq config, for a complete example, see: # http://oss.segetech.com/intra/srv/dnsmasq.conf #log all dns queries log-queries #dont use hosts nameservers no-resolv #use cloudflare as default nameservers, prefer 1^4 server=1.0.0.1 server=1.1.1.1 strict-order #serve all .company queries using a specific nameserver server=/company/10.0.0.1 #explicitly define host-ip mappings address=/myhost.company/10.0.0.2 启动容器 $ docker run \ --name dnsmasq \ -d \ -p 53:53/udp \ -p 5380:8080 \ -v /opt/dnsmasq.conf:/etc/dnsmasq.conf \ --log-opt &amp;#34;max-size=100m&amp;#34; \ -e &amp;#34;HTTP_USER=foo&amp;#34; \ -e &amp;#34;HTTP_PASS=bar&amp;#34; \ --restart always \ jpillora/dnsmasq 其中： -e &amp;quot;HTTP_USER=foo&amp;quot; -e &amp;quot;HTTP_PASS=bar&amp;quot; 为为dnsmasq设定访问用户名和密码。访问地址：`</description></item><item><title>Maven查看当前生效配置、pom、环境变量等命令（mvn help用法）</title><link>https://linkall.pub/blog/maven-help-usage/</link><pubDate>Tue, 26 May 2020 18:21:06 +0000</pubDate><guid>https://linkall.pub/blog/maven-help-usage/</guid><description> 检查当前Maven环境启用的文件 mvn help:effective-settings 查看当前项目的pom配置，包括所有依赖 mvn help:effective-pom 查看当前处于激活状态的profile mvn help:active-profiles 指定使用某个配置文件执行Maven命令 mvn -s &amp;lt;filepath&amp;gt; &amp;lt;goal&amp;gt; mvn -s ~/.m2/settings_local.xml clean deploy 查看当前项目的所有mvn配置 mvn -X 打印所有可用的环境变量和Java系统属性 mvn help:system</description></item><item><title>如何用Mac线刷小米手机</title><link>https://linkall.pub/blog/mi-phone-fastboot/</link><pubDate>Fri, 22 May 2020 18:26:04 +0000</pubDate><guid>https://linkall.pub/blog/mi-phone-fastboot/</guid><description>目录 TOC
+ROM下载地址 对于老款小米，需要使用低版本的ROM才不会卡，这里提供两个ROM历史下载地址，都为非官方的，因为官方的不全。
+https://miuiver.com/ https://roms.miuier.com/ mac刷机工具 adb 安装
+brew cask install android-platform-tools 安装好后配置一下环境变量。 在/etc/profile中加入。
+export PATH=~/android-sdks/platform-tools:~/android-sdks/tools:$PATH 运行fastboot --version检测是否成功安装并配置好环境。
+开始刷机 打开手机调试模式，并手机连接到电脑 进入fastboot模式： 手机已开机使用：adb reboot bootloader 没有开机：开机键+音量下长按 查看当前手机设备名： $ fastboot devices 4e46d6ca fastboot 4e46d6ca为当前设备名 4. 控制台进入到解压后的目录： 运行脚本：
+~/Downloads/kenzo_images_V7.5.2.0.LHOCNDE_20160629.0000.25_5.1_cn ⌚ 14:13:59 $ sh flash_all.sh -s 4e46d6ca tips 实验机器：红米Note3全网通，刷的ROM kenzo_images_V7.5.2.0</description></item></channel></rss>

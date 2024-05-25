@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>notebook on 逆天改命</title><link>https://linkall.pub/tags/notebook/</link><description>Recent content in notebook on 逆天改命</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Mon, 12 Oct 2020 16:31:40 +0000</lastBuildDate><atom:link href="https://linkall.pub/tags/notebook/index.xml" rel="self" type="application/rss+xml"/><item><title>CentOS 安装 Jupyter Notebook</title><link>https://linkall.pub/blog/centos-install-jupyter-notebook/</link><pubDate>Mon, 12 Oct 2020 16:31:40 +0000</pubDate><guid>https://linkall.pub/blog/centos-install-jupyter-notebook/</guid><description>目录[toc]
+安装依赖 yum -y groupinstall &amp;#34;Development Tools&amp;#34; yum -y install python-devel 使用虚拟环境 pip install virtualenv virtualenv pyenv source pyenv/bin/activate Jupyter 安装 &amp;amp; 配置 安装 pip install jupyter 目录准备 我们先为 Jupyter 相关文件准备一个目录：
+mkdir /data/jupytercd /data/jupyter 再建立一个目录作为 Jupyter 运行的根目录：
+mkdir /data/jupyter/root 密码准备 执行以下命令:
+Python2.x
+python -c &amp;#34;import IPython;print IPython.lib.passwd()&amp;#34; Python3.x
+python -c &amp;#34;import IPython;print(IPython.lib.passwd())&amp;#34; 生成配置 jupyter notebook --generate-config --allow-root 修改配置 vi /root/.jupyter/jupyter_notebook_config.py 增加如下配置
+c.NotebookApp.allow_root = True c.NotebookApp.open_browser = False c.NotebookApp.port = 8888 c.</description></item></channel></rss>
