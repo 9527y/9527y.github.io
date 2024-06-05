@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>php on 逆天改命</title><link>https://linkall.pub/tags/php/</link><description>Recent content in php on 逆天改命</description><generator>Hugo -- gohugo.io</generator><language>zh-cn</language><lastBuildDate>Sun, 31 May 2020 18:33:22 +0000</lastBuildDate><atom:link href="https://linkall.pub/tags/php/index.xml" rel="self" type="application/rss+xml"/><item><title>php-fpm 报错500排查</title><link>https://linkall.pub/blog/how-to-debug-php-fpm-500/</link><pubDate>Sun, 31 May 2020 18:33:22 +0000</pubDate><guid>https://linkall.pub/blog/how-to-debug-php-fpm-500/</guid><description>TOC
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>php :: Tag :: 逆天改命</title><link>https://linkall.pub/tags/php/index.html</link><description/><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Sun, 31 May 2020 18:33:22 +0000</lastBuildDate><atom:link href="https://linkall.pub/tags/php/index.xml" rel="self" type="application/rss+xml"/><item><title>php-fpm 报错500排查</title><link>https://linkall.pub/blog/how-to-debug-php-fpm-500/index.html</link><pubDate>Sun, 31 May 2020 18:33:22 +0000</pubDate><guid>https://linkall.pub/blog/how-to-debug-php-fpm-500/index.html</guid><description>TOC
 php-fpm 报错500 php-fpm报错500，使用nginx转发，同时有没有日志。
 思路将错误暴露出来：
 使用phpinfo将php.ini的路径找出 新建一个页面，内容如下：
-&amp;lt;?php phpinfo(); ?&amp;gt; 找到php.ini的位置：
-/usr/local/php/etc/php.ini 编辑php.ini 查找 display_errors，将配置改为On，即为显示错误。
-display_errors = On 记得处理好问题后改回去。</description></item></channel></rss>
+&lt;?php phpinfo(); ?> 找到php.ini的位置：
+/usr/local/php/etc/php.ini编辑php.ini 查找 display_errors，将配置改为On，即为显示错误。
+display_errors = On记得处理好问题后改回去。</description></item></channel></rss>
